@@ -28,9 +28,9 @@ public class rec_rice extends Fragment {
     private static ArrayList<rec_list> itemArrayList;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState){
-        View view = inflater.inflate(R.layout.rec_frag1, container, false);
+        View view = inflater.inflate(R.layout.rec_frag, container, false);
 
-        recyclerView = view.findViewById(R.id.my_recycler_view1);
+        recyclerView = view.findViewById(R.id.my_recycler_view);
         layoutManager = new GridLayoutManager(getContext(),3);
         recyclerView.setLayoutManager(layoutManager);
 

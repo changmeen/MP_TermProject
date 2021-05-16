@@ -13,7 +13,6 @@ public class rec_list {
         this.image = image;
     }
 
-
     public void setname(String name) {
         this.name = name;
     }

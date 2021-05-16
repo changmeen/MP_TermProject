@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -28,9 +27,9 @@ public class rec_noodle extends Fragment {
     private static ArrayList<rec_list> itemArrayList;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState){
-        View view = inflater.inflate(R.layout.rec_frag2, container, false);
+        View view = inflater.inflate(R.layout.rec_frag, container, false);
 
-        recyclerView = view.findViewById(R.id.my_recycler_view2);
+        recyclerView = view.findViewById(R.id.my_recycler_view);
         layoutManager = new GridLayoutManager(getContext(),3);
         recyclerView.setLayoutManager(layoutManager);
 
