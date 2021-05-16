@@ -3,6 +3,7 @@ package com.changmeen.firebase;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,22 +18,21 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
-    BottomNavigationView bottomNavigationView;
-    Whole_menu whole_menu;
-    Ingredients ingredients;
-    TodayMenu today_menu;
-
+    private NavigationView nv;
     ActionBarDrawerToggle barDrawerToggle;
+    private DrawerLayout drawer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_main2);
         setContentView(R.layout.drawbar);
-
+        drawer = findViewById(R.id.drawer);
         //준석
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -44,45 +44,17 @@ public class MainActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
 
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
-        whole_menu = new Whole_menu();
-        ingredients = new Ingredients();
-        today_menu = new TodayMenu();
-        getSupportFragmentManager().beginTransaction().replace(R.id.Layout1,today_menu).commitAllowingStateLoss();
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-            @Override public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-
-                switch (menuItem.getItemId()){
-                    //menu_bottom.xml에서 지정해줬던 아이디 값을 받아와서 각 아이디값마다 다른 이벤트를 발생시킵니다.
-                    case R.id.tab1:{
-                        getSupportFragmentManager().beginTransaction() .replace(R.id.Layout1,today_menu).commitAllowingStateLoss();
-                        return true;
-                    }
-
-                    case R.id.tab2:{
-                        getSupportFragmentManager().beginTransaction() .replace(R.id.Layout1,whole_menu).commitAllowingStateLoss();
-
-                        return true;
-                    }
-
-                    case R.id.tab3:{
-                        getSupportFragmentManager().beginTransaction() .replace(R.id.Layout1,ingredients).commitAllowingStateLoss();
-
-                        return true;
-                    }
-
-                    default: return false;
-                }
-            }
-        });
         //조절용 토글 버튼 객체 생성
         barDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.app_name, R.string.app_name);
         //삼선아이콘 모양
         barDrawerToggle.syncState();
 
+
+        LayoutInflater mInflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        mInflater.inflate(R.layout.drawbar, drawer, true);
+        nv = findViewById(R.id.nv);
+        NavigationView.enable(MainActivity.this, nv);
     }
 
     //뒤로가기 눌렀을 때
