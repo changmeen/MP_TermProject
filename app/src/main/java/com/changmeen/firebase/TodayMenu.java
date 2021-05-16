@@ -9,19 +9,19 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-public class TodayMenu extends AppCompatActivity {
+public class TodayMenu extends Fragment {
 
+    ViewGroup viewGroup;
     @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
         viewGroup = (ViewGroup) inflater.inflate(R.layout.today_menu,container,false);
 
-        Button subButton1 = (Button) findViewById(R.id.button1);
-        Button subButton2 = (Button) findViewById(R.id.button2);
-        Button subButton3 = (Button) findViewById(R.id.button3);
+        Button subButton1 = (Button) viewGroup.findViewById(R.id.button1);
+        Button subButton2 = (Button) viewGroup.findViewById(R.id.button2);
+        Button subButton3 = (Button) viewGroup.findViewById(R.id.button3);
 
         subButton1.setOnClickListener(new View.OnClickListener() {
             @Override

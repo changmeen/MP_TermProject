@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -27,126 +28,75 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class Whole_menu extends Fragment {
-    private RecyclerView listview;
-    private Context mContext;
-    private rec_adapter adapter;
-    private RecyclerView.LayoutManager layoutManager;
 
-    @Nullable
-    @Override
+    private ViewPager vpContainer;
+    private TabLayout tab_rec;
+    private rec_pagerAdapter adapter;
+
+    public Whole_menu() {
+
+    }
+
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.whole_menu, container, false);
 
-        listview = view.findViewById(R.id.rcp_RecyclerView_rice);
-        layoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
-        listview.setLayoutManager(layoutManager);
+        vpContainer = view.findViewById(R.id.vp_container);
+        tab_rec = view.findViewById(R.id.tabs_rec);
 
-        ArrayList<rec_list> itemArrayList = new ArrayList<>();
-        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.child("Food").child("Rice").addValueEventListener(new ValueEventListener() {
+        tab_rec.addTab(tab_rec.newTab().setText("#밥류"));
+        tab_rec.addTab(tab_rec.newTab().setText("#면류"));
+
+
+        adapter = new rec_pagerAdapter(getChildFragmentManager());
+        vpContainer.setAdapter(adapter);
+        tab_rec.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    rec_list recList = snapshot.getValue(rec_list.class);
-                    itemArrayList.add(recList);
-                }
-                adapter.notifyDataSetChanged();
+            public void onTabSelected(TabLayout.Tab tab) {
+                vpContainer.setCurrentItem(tab.getPosition());
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.e("fragment1", String.valueOf(databaseError.toException()));
-            }
-        });
-        adapter = new rec_adapter(itemArrayList, mContext);
-        listview.setAdapter(adapter);
+            public void onTabUnselected(TabLayout.Tab tab) {
 
-        listview = view.findViewById(R.id.rcp_RecyclerView_noodle);
-        layoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
-        listview.setLayoutManager(layoutManager);
-
-        ArrayList<rec_list> itemArrayList1 = new ArrayList<>();
-        DatabaseReference mDatabase1 = FirebaseDatabase.getInstance().getReference();
-        mDatabase.child("Food").child("Noodle").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    rec_list recList = snapshot.getValue(rec_list.class);
-                    itemArrayList.add(recList);
-                }
-                adapter.notifyDataSetChanged();
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.e("fragment1", String.valueOf(databaseError.toException()));
+            public void onTabReselected(TabLayout.Tab tab) {
+
             }
         });
-        adapter = new rec_adapter(itemArrayList, mContext);
-        listview.setAdapter(adapter);
-
+        vpContainer.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tab_rec));
         return view;
     }
 
-//    private void Rice(View view) {;
-//        listview = view.findViewById(R.id.rcp_RecyclerView_noodle);
-//        layoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
-//        listview.setLayoutManager(layoutManager);
-//
-//        ArrayList<rec_list> itemArrayList = new ArrayList<>();
-//        mDatabase.child("Food").addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-//                    rec_list recList = snapshot.getValue(rec_list.class);
-//                    itemArrayList.add(recList);
-//                }
-//                adapter.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//                Log.e("fragment1", String.valueOf(databaseError.toException()));
-//            }
-//        });
-//        adapter = new rec_adapter(itemArrayList, mContext);
-//        listview.setAdapter(adapter);
-//    }
+    public class rec_pagerAdapter extends FragmentPagerAdapter {
 
-//    private void noodle(View view){;
-//        listview = view.findViewById(R.id.rcp_RecyclerView_noodle);
-//        LinearLayoutManager layoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
-//        listview.setLayoutManager(layoutManager);
-//
-//        ArrayList<rec_list> itemArrayList = new ArrayList<>();
-//        mDatabase.child("Food").child("Noodle").addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//                itemArrayList.clear();
-//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-//                    rec_list recList = snapshot.getValue(rec_list.class);
-//                    itemArrayList.add(recList);
-//                }
-//                adapter.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//                Log.e("fragment1", String.valueOf(databaseError.toException()));
-//            }
-//        });
-//        adapter = new rec_adapter(itemArrayList, mContext);
-//        listview.setAdapter(adapter);
-//    }
+        public rec_pagerAdapter(@NonNull FragmentManager fm) {
+            super(fm);
+        }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        mContext = context;
+        @NonNull
+        @Override
+        public Fragment getItem(int position) {
+            switch (position) {
+                case 0: {
+                    return new rec_rice();
+                }
+                case 1: {
+                    return new rec_noodle();
+                }
+                default: {
+                    return null;
+                }
+            }
+        }
+
+        @Override
+        public int getCount() {
+            return 2;
+        }
+
+
     }
 }
 //    protected void onCreate(Bundle savedInstanceState) {

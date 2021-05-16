@@ -4,18 +4,18 @@
     tools:showIn="navigation_view">
 
     <item
-        android:id="@+id/today"
+        android:id="@+id/nav_memo"
         android:icon ="@drawable/bibimbap"
-        android:title="오늘 뭐먹지" />
+        android:title="정글은" />
 
     <item
-        android:id="@+id/menu"
+        android:id="@+id/nav_homepage"
         android:icon="@drawable/bibimbap"
-        android:title="메뉴" />
+        android:title="저튜브" />
     <item
-        android:id="@+id/ref"
+        android:id="@+id/nav_logout"
         android:icon="@drawable/unknown"
-        android:title="냉장고" />
+        android:title="앙 기모띠" />
 
 
     <item android:title="Communicate">

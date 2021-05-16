@@ -12,6 +12,9 @@
     <string name="success_signup">회원가입 성공</string>
     <string name="failed_signup">회원가입 실패</string>
 
+    <string name="rec_tab1">#밥류</string>
+    <string name="rec_tab2">#면류</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>

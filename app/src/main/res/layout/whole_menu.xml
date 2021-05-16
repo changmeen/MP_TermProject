@@ -1,42 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbars="none">
+    android:orientation="vertical">
 
-    <LinearLayout
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabs_rec"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingLeft="10dp"
-        android:paddingTop="20dp">
-        <TextView
-            android:id="@+id/rcp_textview_eating_alone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="#밥류"
-            android:textSize="20sp"
-            android:layout_marginBottom="10dp"/>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcp_RecyclerView_rice"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:scrollbars="none"
-            android:layout_marginBottom="10dp"/>
+        android:layout_height="wrap_content"
+        app:tabMode="fixed"
+        app:tabTextColor="@color/black"
+        app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget" />
 
-        <TextView
-            android:id="@+id/rcp_textview_noodle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="#면류"
-            android:textSize="20sp"
-            android:layout_marginBottom="10dp"/>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcp_RecyclerView_noodle"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:scrollbars="none"
-            android:layout_marginBottom="10dp" />
-    </LinearLayout>
-</ScrollView>
+    <androidx.viewpager.widget.ViewPager
+        android:layout_marginLeft="10dp"
+        android:id="@+id/vp_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>
