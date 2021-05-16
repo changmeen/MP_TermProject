@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="메뉴선택"
+        android:textSize="50dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation ="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text = "#밥류"
+            android:textSize = "20dp"
+            android:layout_marginLeft = "10dp" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:overScrollMode="never">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <Button
+                    android:id="@+id/rice1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "황금계란볶음밥"/>
+
+                <Button
+                    android:id="@+id/rice2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "짜장볶음밥"/>
+
+                <Button
+                    android:id="@+id/rice3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "김치덮밥"/>
+
+                <Button
+                    android:id="@+id/rice4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "카레덮밥"/>
+
+                <Button
+                    android:id="@+id/rice5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "시금치고기덮밥"/>
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text = "#면류"
+            android:textSize = "20dp"
+            android:layout_marginLeft = "10dp"
+            android:layout_marginTop="10dp"/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:overScrollMode="never" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <Button
+                    android:id="@+id/noodle1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "차돌짬뽕"/>
+
+                <Button
+                    android:id="@+id/noodle2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "해장라면"/>
+
+                <Button
+                    android:id="@+id/noodle3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "크림파스타"/>
+
+                <Button
+                    android:id="@+id/noodle4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "알리오올리오"/>
+
+                <Button
+                    android:id="@+id/noodle5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "잔치국수"/>
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text = "#찌개류"
+            android:textSize = "20dp"
+            android:layout_marginLeft = "10dp"
+            android:layout_marginTop="10dp"/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:overScrollMode="never" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <Button
+                    android:id="@+id/soup1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "갈비탕"/>
+
+                <Button
+                    android:id="@+id/soup2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "감자탕"/>
+
+                <Button
+                    android:id="@+id/soup3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "육개장"/>
+
+                <Button
+                    android:id="@+id/soup4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "부대찌개"/>
+
+                <Button
+                    android:id="@+id/soup5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "청국장"/>
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text = "#반찬류"
+            android:textSize = "20dp"
+            android:layout_marginLeft = "10dp"
+            android:layout_marginTop="10dp"/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:overScrollMode="never" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <Button
+                    android:id="@+id/side1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "도라지무침"/>
+
+                <Button
+                    android:id="@+id/side2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "가지무침"/>
+
+                <Button
+                    android:id="@+id/side3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "고사리무침"/>
+
+                <Button
+                    android:id="@+id/side4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "소고기불고기"/>
+
+                <Button
+                    android:id="@+id/side5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "함박스테이크"/>
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text = "#디저트"
+            android:textSize = "20dp"
+            android:layout_marginLeft = "10dp"
+            android:layout_marginTop="10dp"/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:overScrollMode="never">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <Button
+                    android:id="@+id/dessert1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "허니브레드"/>
+
+                <Button
+                    android:id="@+id/dessert2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "땅콩빵"/>
+
+                <Button
+                    android:id="@+id/dessert3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "케이크"/>
+
+                <Button
+                    android:id="@+id/dessert4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "튜나멜트토스트"/>
+
+                <Button
+                    android:id="@+id/dessert5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "고구마라떼"/>
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
