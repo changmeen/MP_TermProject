@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
     Whole_menu whole_menu;
-    Ingredients ingredients;
+    Ingredient_page ingredients;
     TodayMenu today_menu;
 
     NavigationView navigationView;
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         whole_menu = new Whole_menu();
-        ingredients = new Ingredients();
+        ingredients = new Ingredient_page();
         today_menu = new TodayMenu();
         getSupportFragmentManager().beginTransaction().replace(R.id.Layout1,today_menu).commit();
 
