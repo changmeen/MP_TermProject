@@ -24,21 +24,13 @@ public class LoadingDBSection extends AppCompatActivity {
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        write();
+        read();
     }
 
-    private void write(){
-        Map<String, Object> map = new HashMap<>();
-        map.put("ing", "water");
-        map.put("rec", "aaaa");
+    private void read(){
 
-        mDatabase.child("asdf").setValue(map).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                Toast.makeText(getApplicationContext(), "Sucess!", Toast.LENGTH_SHORT).show();
-            }
-        });
-        Toast.makeText(getApplicationContext(), "Next!", Toast.LENGTH_SHORT).show();
+
+
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
     }
