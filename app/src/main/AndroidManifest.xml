@@ -13,7 +13,6 @@
         <activity android:name=".youtube"></activity>
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".SignUpActivity"></activity>
-        <activity android:name=".LoadingDBSection"></activity>
         <activity android:name=".receipeActivity"></activity>
         
         <activity android:name=".LoginActivity">
