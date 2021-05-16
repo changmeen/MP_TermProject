@@ -2,6 +2,8 @@ package com.changmeen.firebase;
 
 
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,9 +16,14 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     Ingredients ingredients;
     TodayMenu today_menu;
 
+    NavigationView navigationView;
     ActionBarDrawerToggle barDrawerToggle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +91,27 @@ public class MainActivity extends AppCompatActivity {
         //삼선아이콘 모양
         barDrawerToggle.syncState();
 
+        navigationView=findViewById(R.id.nav_view);
+
+        //네비게이션에서 유튜브 누르면 유튜브로 이동
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId()){
+                    case R.id.nav_email:
+                        //https://www.youtube.com/channel/UCyn-K7rZLXjGl7VXGweIlcA
+                        startActivity(new Intent(Intent.ACTION_VIEW)
+                                .setData(Uri.parse("https://www.youtube.com/c/paikscuisine/featured")) // edit this url
+                                .setPackage("com.google.android.youtube"));	// do not edit
+                        Toast.makeText(MainActivity.this, "Youtube",Toast.LENGTH_SHORT).show();
+                }
+                return false;
+            }
+        });
     }
+
+
+
 
     //뒤로가기 눌렀을 때
     @Override
@@ -114,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
+
 
 
     @Override

@@ -46,7 +46,6 @@ public class Whole_menu extends Fragment {
         tab_rec.addTab(tab_rec.newTab().setText("#밥류"));
         tab_rec.addTab(tab_rec.newTab().setText("#면류"));
 
-
         adapter = new rec_pagerAdapter(getChildFragmentManager());
         vpContainer.setAdapter(adapter);
         tab_rec.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
