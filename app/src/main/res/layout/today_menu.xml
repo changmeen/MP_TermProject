@@ -15,11 +15,6 @@
         android:text="오늘 뭐먹지"
         android:textSize="50dp" />
 
-    <EditText
-        android:id="@+id/et"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
 
     <cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager
         android:id="@+id/autoViewPager"

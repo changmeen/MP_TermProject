@@ -17,6 +17,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager;
@@ -34,9 +35,7 @@ public class TodayMenu extends Fragment {
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        EditText et = (EditText) v.findViewById(R.id.et);
-
-        mDatabase.child("Food").child("Noodle").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        mDatabase.child("Food").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
@@ -50,7 +49,7 @@ public class TodayMenu extends Fragment {
                         int sidx = readstr.indexOf("image") + 6;
                         int eidx = readstr.indexOf(",");
 
-                        et.setText(readstr.substring(sidx,eidx));
+                        data.add(readstr.substring(sidx, eidx));
 
                         readstr = readstr.substring(eidx);
 
@@ -58,17 +57,16 @@ public class TodayMenu extends Fragment {
                             readstr = readstr.substring(readstr.indexOf("image"));
                     }
 
+                    autoScrollViewPager = (AutoScrollViewPager) v.findViewById(R.id.autoViewPager);
+
+                    AutoScrollAdapter scrollAdapter = new AutoScrollAdapter(getActivity(), data);
+                    autoScrollViewPager.setAdapter(scrollAdapter); //Auto Viewpager에 Adapter 장착
+                    autoScrollViewPager.setInterval(3000); // 페이지 넘어갈 시간 간격 설정
+                    autoScrollViewPager.startAutoScroll(); //Auto Scroll 시작
                 }
             }
         });
 
-
-        autoScrollViewPager = (AutoScrollViewPager) v.findViewById(R.id.autoViewPager);
-
-        AutoScrollAdapter scrollAdapter = new AutoScrollAdapter(getActivity(), data);
-        autoScrollViewPager.setAdapter(scrollAdapter); //Auto Viewpager에 Adapter 장착
-        autoScrollViewPager.setInterval(3000); // 페이지 넘어갈 시간 간격 설정
-        autoScrollViewPager.startAutoScroll(); //Auto Scroll 시작
 
         return v;
 
