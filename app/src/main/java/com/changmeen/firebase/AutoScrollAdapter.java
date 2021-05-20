@@ -18,9 +18,9 @@ import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 public class AutoScrollAdapter extends PagerAdapter {
 
     Context context;
-    ArrayList<Object> data;
+    ArrayList<String> data;
 
-    public AutoScrollAdapter(Context context, ArrayList<Object> data) {
+    public AutoScrollAdapter(Context context, ArrayList<String> data) {
         this.context = context;
         this.data = data;
     }
