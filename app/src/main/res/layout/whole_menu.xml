@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs_rec"
         android:layout_width="match_parent"

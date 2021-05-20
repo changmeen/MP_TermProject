@@ -55,14 +55,24 @@ public class rec_adapter extends RecyclerView.Adapter<rec_adapter.ViewHolder>{
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         Glide.with(holder.itemView)
-                .load(arrayList.get(position).getimage())
+                .load(arrayList.get(position).getImage())
                 .into(holder.rProfile);
 
-        holder.rName.setText(arrayList.get(position).getname());
+        holder.rName.setText(arrayList.get(position).getName());
         holder.rProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 intent = new Intent(v.getContext(), receipeActivity.class);
+                Recipe recipe = new Recipe();
+
+                recipe.setImage(arrayList.get(position).getImage());
+                recipe.setName(arrayList.get(position).getName());
+                recipe.setIngredient(arrayList.get(position).getIngredient());
+                recipe.setRecipe(arrayList.get(position).getRecipe());
+                recipe.setRecUrl(arrayList.get(position).getRecurl());
+
+                intent.putExtra("list", recipe);
+
                 v.getContext().startActivity(intent);
             }
         });

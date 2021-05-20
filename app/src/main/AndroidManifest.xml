@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
-        <activity android:name=".youtube"></activity>
+        <activity android:name=".RecipeSearch"></activity>
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".SignUpActivity"></activity>
         <activity android:name=".receipeActivity"></activity>

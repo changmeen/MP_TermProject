@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     Whole_menu whole_menu;
     Ingredient_page ingredients;
     TodayMenu today_menu;
-
+    ImageView ivSearch;
     NavigationView navigationView;
     ActionBarDrawerToggle barDrawerToggle;
     @Override
@@ -51,6 +52,12 @@ public class MainActivity extends AppCompatActivity {
         actionBar.setDisplayShowTitleEnabled(false);//기본 제목을 없애줍니다.
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        ivSearch = findViewById(R.id.iv_search);
+        ivSearch.setOnClickListener(v -> {
+            Intent intent = new Intent(this, RecipeSearch.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+        });
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
