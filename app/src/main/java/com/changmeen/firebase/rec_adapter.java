@@ -15,11 +15,11 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 public class rec_adapter extends RecyclerView.Adapter<rec_adapter.ViewHolder>{
-    private ArrayList<rec_list> arrayList;
+    private ArrayList<Recipe> arrayList;
     private Context context;
     private Intent intent;
 
-    public rec_adapter(ArrayList<rec_list> arrayList, Context context) {
+    public rec_adapter(ArrayList<Recipe> arrayList, Context context) {
         this.arrayList = arrayList;
         this.context = context;
     }
@@ -38,7 +38,7 @@ public class rec_adapter extends RecyclerView.Adapter<rec_adapter.ViewHolder>{
     }
 
     // 생성자 - 넘어 오는 데이터파입에 유의해야 한다.
-    public rec_adapter(ArrayList<rec_list> myDataset) {
+    public rec_adapter(ArrayList<Recipe> myDataset) {
         arrayList = myDataset;
     }
 
@@ -69,7 +69,7 @@ public class rec_adapter extends RecyclerView.Adapter<rec_adapter.ViewHolder>{
                 recipe.setName(arrayList.get(position).getName());
                 recipe.setIngredient(arrayList.get(position).getIngredient());
                 recipe.setRecipe(arrayList.get(position).getRecipe());
-                recipe.setRecUrl(arrayList.get(position).getRecurl());
+                recipe.setRecUrl(arrayList.get(position).getRecUrl());
 
                 intent.putExtra("list", recipe);
 

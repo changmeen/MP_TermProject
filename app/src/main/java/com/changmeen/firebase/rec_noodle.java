@@ -24,7 +24,7 @@ public class rec_noodle extends Fragment {
     private RecyclerView recyclerView;
     private rec_adapter adapter;
     private GridLayoutManager layoutManager;
-    private static ArrayList<rec_list> itemArrayList;
+    private static ArrayList<Recipe> itemArrayList;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.rec_frag, container, false);
@@ -42,7 +42,7 @@ public class rec_noodle extends Fragment {
                 //파이어베이스 데이터베이스의 데이터를 받아오는 곳
                 itemArrayList.clear(); // 기존 배열리스트가 존재하지 않게 초기화
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) { // 반복문으로  데이터 List를 추출해냄
-                    rec_list rec = snapshot.getValue(rec_list.class);//만들어뒀던 레시피 리스트  객체에 데이터를 담는다
+                    Recipe rec = snapshot.getValue(Recipe.class);//만들어뒀던 레시피 리스트  객체에 데이터를 담는다
                     itemArrayList.add(rec);//담은 데이터들을 배열리스트에 넣고 리사이클러뷰로 보낼 준비
                 }
                 adapter.notifyDataSetChanged();//리스트 저장 및 새로고침

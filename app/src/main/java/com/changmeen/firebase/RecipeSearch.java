@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 public class RecipeSearch extends AppCompatActivity {
 
-    private ArrayList<rec_list> arrayList;
+    private ArrayList<Recipe> arrayList;
     private rec_adapter recAdapter;
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
@@ -55,7 +55,7 @@ public class RecipeSearch extends AppCompatActivity {
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 arrayList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    rec_list RecList = dataSnapshot.getValue(rec_list.class);
+                    Recipe RecList = dataSnapshot.getValue(Recipe.class);
                     if (RecList.getName().contains(text)) {
                         arrayList.add(RecList);
                         recAdapter = new rec_adapter(arrayList, getApplicationContext());

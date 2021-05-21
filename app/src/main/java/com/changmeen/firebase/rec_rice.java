@@ -25,7 +25,7 @@ public class rec_rice extends Fragment {
     private RecyclerView recyclerView;
     private rec_adapter adapter;
     private GridLayoutManager layoutManager;
-    private static ArrayList<rec_list> itemArrayList;
+    private static ArrayList<Recipe> itemArrayList;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.rec_frag, container, false);
@@ -43,7 +43,7 @@ public class rec_rice extends Fragment {
 
                 itemArrayList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    rec_list rec = snapshot.getValue(rec_list.class);
+                    Recipe rec = snapshot.getValue(Recipe.class);
                     itemArrayList.add(rec);
                 }
                 adapter.notifyDataSetChanged();
