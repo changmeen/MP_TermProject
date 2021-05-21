@@ -1,95 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <ImageView
-        android:layout_width="250dp"
-        android:layout_height="200dp"
-        android:id="@+id/rcp_ImageView"
-        android:layout_gravity="center_horizontal" />
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/textContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="음식 이름: "
-            android:textColor="@color/black"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/rcp_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="text"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
-    </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="음식 재료: "
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/rcp_ingredient"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="text"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="음식 만드는 법: "
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/rcp_recipe"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="text"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-        </LinearLayout>
-
-
-        <com.google.android.youtube.player.YouTubePlayerView
-            android:id="@+id/rcp_video"
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/rcp_ImageView"
+            android:layout_width="250dp"
             android:layout_height="200dp"
-            android:layout_gravity="center_horizontal|center_vertical" />
+            android:layout_gravity="center_horizontal" />
+
+        <LinearLayout
+            android:id="@+id/textContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="음식 이름: "
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/rcp_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="text"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="음식 재료: "
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/rcp_ingredient"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="text"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="음식 만드는 법: "
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/rcp_recipe"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="text"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
 
 
+            <com.google.android.youtube.player.YouTubePlayerView
+                android:id="@+id/rcp_video"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_gravity="center_horizontal|center_vertical" />
+
+
+        </LinearLayout>
     </LinearLayout>
 
-</LinearLayout>
+</ScrollView>
