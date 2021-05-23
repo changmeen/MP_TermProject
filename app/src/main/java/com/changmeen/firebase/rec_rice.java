@@ -27,11 +27,11 @@ public class rec_rice extends Fragment {
     private GridLayoutManager layoutManager;
     private static ArrayList<Recipe> itemArrayList;
 
-    public View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState){
+    public View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.rec_frag, container, false);
 
         recyclerView = view.findViewById(R.id.my_recycler_view);
-        layoutManager = new GridLayoutManager(getContext(),3);
+        layoutManager = new GridLayoutManager(getContext(), 3);
         recyclerView.setLayoutManager(layoutManager);
 
         itemArrayList = new ArrayList<>();
@@ -49,6 +49,7 @@ public class rec_rice extends Fragment {
                 adapter.notifyDataSetChanged();
 
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 

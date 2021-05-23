@@ -50,7 +50,6 @@ public class Ingredient_page extends Fragment {
                     itemArrayList.add(rec);
                 }
                 adapter.notifyDataSetChanged();
-
             }
 
             @Override

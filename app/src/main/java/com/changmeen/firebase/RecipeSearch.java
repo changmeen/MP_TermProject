@@ -49,6 +49,7 @@ public class RecipeSearch extends AppCompatActivity {
             Toast.makeText(this, searchET.getText().toString(), Toast.LENGTH_SHORT).show();
         });
     }
+
     public void SearchContents(final String text) {
         mDatabase.child("Search").addValueEventListener(new ValueEventListener() {
             @Override

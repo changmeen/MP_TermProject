@@ -39,8 +39,8 @@ public class SignUpActivity extends AppCompatActivity {
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
-        public void onClick(View v){
-            switch(v.getId()) {
+        public void onClick(View v) {
+            switch (v.getId()) {
                 case R.id.signUpButton:
                     sinUp();
                     break;
@@ -48,9 +48,9 @@ public class SignUpActivity extends AppCompatActivity {
         }
     };
 
-    private void sinUp(){
-        String email = ((EditText)findViewById(R.id.emailEditText)).getText().toString();
-        String password = ((EditText)findViewById(R.id.passwordEditText)).getText().toString();
+    private void sinUp() {
+        String email = ((EditText) findViewById(R.id.emailEditText)).getText().toString();
+        String password = ((EditText) findViewById(R.id.passwordEditText)).getText().toString();
 
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
