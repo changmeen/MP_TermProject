@@ -19,7 +19,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
-
 import cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager;
 
 public class TodayMenu extends Fragment {

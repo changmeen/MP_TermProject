@@ -3,31 +3,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <item
-        android:id="@+id/nav_memo"
-        android:icon ="@drawable/bibimbap"
-        android:title="정글은" />
+<!--    <item-->
+<!--        android:id="@+id/nav_memo"-->
+<!--        android:icon ="@drawable/bibimbap"-->
+<!--        android:title="정글은" />-->
 
-    <item
-        android:id="@+id/nav_homepage"
-        android:icon="@drawable/bibimbap"
-        android:title="저튜브" />
-    <item
-        android:id="@+id/nav_logout"
-        android:icon="@drawable/unknown"
-        android:title="앙 기모띠" />
+<!--    <item-->
+<!--        android:id="@+id/nav_homepage"-->
+<!--        android:icon="@drawable/bibimbap"-->
+<!--        android:title="저튜브" />-->
+<!--    <item-->
+<!--        android:id="@+id/nav_logout"-->
+<!--        android:icon="@drawable/unknown"-->
+<!--        android:title="앙 기모띠" />-->
 
 
     <item android:title="Communicate">
         <menu>
             <item
                 android:id="@+id/nav_email"
-                android:icon="@drawable/tteokbok2"
                 android:title="Youtube" />
-            <item
-                android:id="@+id/nav_appinfo"
-                android:icon="@drawable/kimchibap"
-                android:title="쿠쿠르삥빵뽕" />
+
+<!--                android:icon="@drawable/youtubeicon"-->
+<!--                android:title="Youtube" />-->
+<!--            <item-->
+<!--                android:id="@+id/nav_appinfo"-->
+<!--                android:icon="@drawable/kimchibap"-->
+<!--                android:title="쿠쿠르삥빵뽕" />-->
         </menu>
     </item>
 </menu>
