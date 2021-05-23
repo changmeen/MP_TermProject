@@ -32,13 +32,13 @@ public class receipeActivity extends YouTubeBaseActivity {
         super.onCreate(savedInstance);
         setContentView(R.layout.rcp_view);
 
-        rName = (TextView)findViewById(R.id.rcp_name);
-        rIngredient = (TextView)findViewById(R.id.rcp_ingredient);
-        rRecipe = (TextView)findViewById(R.id.rcp_recipe);
+        rName = (TextView) findViewById(R.id.rcp_name);
+        rIngredient = (TextView) findViewById(R.id.rcp_ingredient);
+        rRecipe = (TextView) findViewById(R.id.rcp_recipe);
         rProfile = (ImageView) findViewById(R.id.rcp_ImageView);
 
         intent = getIntent();
-        recipe = (Recipe)intent.getSerializableExtra("list");
+        recipe = (Recipe) intent.getSerializableExtra("list");
 
         rName.setText(recipe.getName());
         rIngredient.setText(recipe.getIngredient());
@@ -60,6 +60,7 @@ public class receipeActivity extends YouTubeBaseActivity {
             public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
 
             }
-        };playerView.initialize(API_KEY, listener);
+        };
+        playerView.initialize(API_KEY, listener);
     }
 }

@@ -94,13 +94,5 @@ public class Whole_menu extends Fragment {
         public int getCount() {
             return 2;
         }
-
-
     }
 }
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.whole_menu);
-//    }
-//
-

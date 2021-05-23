@@ -14,7 +14,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class rec_adapter extends RecyclerView.Adapter<rec_adapter.ViewHolder>{
+public class rec_adapter extends RecyclerView.Adapter<rec_adapter.ViewHolder> {
     private ArrayList<Recipe> arrayList;
     private Context context;
     private Intent intent;
@@ -50,6 +50,7 @@ public class rec_adapter extends RecyclerView.Adapter<rec_adapter.ViewHolder>{
         ViewHolder holder = new ViewHolder(v);
         return holder;
     }
+
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
@@ -77,9 +78,10 @@ public class rec_adapter extends RecyclerView.Adapter<rec_adapter.ViewHolder>{
             }
         });
     }
+
     @Override
     public int getItemCount() {
 
-        return (arrayList !=null ? arrayList.size():0);
+        return (arrayList != null ? arrayList.size() : 0);
     }
 }
