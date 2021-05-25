@@ -159,6 +159,8 @@ public class MainActivity extends AppCompatActivity {
                 show();
                 break;
             case R.id.account:
+                Intent intent = new Intent(this, Profile_activity.class);
+                startActivity(intent);
                 break;
 //            case android.R.id.home:
 //                break;

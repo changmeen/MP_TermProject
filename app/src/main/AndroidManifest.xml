@@ -11,6 +11,7 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         <activity android:name=".RecipeSearch"></activity>
+        <activity android:name=".Profile_activity"></activity>
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".SignUpActivity"></activity>
         <activity android:name=".receipeActivity"></activity>
