@@ -19,7 +19,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.changmeen.firebase.Ingredient_page;
-import com.changmeen.R;
+import com.changmeen.firebase.R;
 import com.changmeen.firebase.TodayMenu;
 import com.changmeen.firebase.Whole_menu;
 import com.changmeen.firebase.rec_noodle;

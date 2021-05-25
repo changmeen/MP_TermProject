@@ -65,13 +65,6 @@ public class Rfg_adapter extends RecyclerView.Adapter<Rfg_adapter.ViewHolder> {
                 .into(holder.rProfile);
 
         holder.rName.setText(arrayList.get(position).getname());
-        holder.rProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
     }
 
     @Override

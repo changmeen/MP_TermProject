@@ -1,6 +1,8 @@
 package com.changmeen.firebase;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -29,6 +31,7 @@ public class Ingredient_page extends Fragment {
     private GridLayoutManager layoutManager;
     private Rfg_adapter adapter;
     private static ArrayList<Ingredients_list> itemArrayList;
+    private SharedPreferences prefer;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.ingredient_page, container, false);
@@ -47,11 +50,13 @@ public class Ingredient_page extends Fragment {
                 startActivityForResult(intent, 0);
             }
         });
+        prefer = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
+        String userToken = prefer.getString("token", "");
 
         // 현재 전체 재료를 받아오는 부분 -> 내 냉장고에 있는 재료만 받아오게
         // Ingredient_adapter 사용중 -> Rfg_adapter 사용
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.child("Ingredient").addValueEventListener(new ValueEventListener() {
+        mDatabase.child("userIngredient").child(userToken).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
