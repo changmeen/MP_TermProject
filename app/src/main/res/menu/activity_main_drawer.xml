@@ -12,6 +12,10 @@
                 android:icon="@drawable/icon_1"
                 android:title="Youtube" />
 
+
+            <item
+                android:id="@+id/nav_community"
+                android:title="Community" />
 <!--                android:icon="@drawable/youtubeicon"-->
 <!--                android:title="Youtube" />-->
 <!--            <item-->

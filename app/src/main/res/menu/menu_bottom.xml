@@ -24,6 +24,6 @@
             android:icon="@drawable/whole_menu"
             android:enabled="true"
             android:checked="true"
-            android:title="냉장고"
-    />
+            android:title="냉장고" />
+
     </menu>

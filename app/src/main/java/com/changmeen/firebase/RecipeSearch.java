@@ -65,7 +65,6 @@ public class RecipeSearch extends AppCompatActivity {
                 recyclerView.setAdapter(recAdapter);
                 recyclerView.setLayoutManager(linearLayoutManager);
             }
-
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
             }

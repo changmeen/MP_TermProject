@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Recipe implements Serializable {
+
     private String name;
     private String image;
     private String ingredient;

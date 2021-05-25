@@ -1,6 +1,7 @@
 package com.changmeen.firebase;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,24 +15,30 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
     FirebaseAuth mAuth;
+    private SharedPreferences pref;
+    private String token;
+    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(intent);
+      //  Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+      //   startActivity(intent);
 
         Button loginButton = (Button) findViewById(R.id.LoginButton);
         Button signUpButton = (Button) findViewById(R.id.SignUpButton);
         EditText ID = (EditText) findViewById(R.id.editTextTextPersonName);
         EditText PW = (EditText) findViewById(R.id.editTextTextPassword);
         mAuth = mAuth.getInstance();
+        pref = getSharedPreferences("pref", MODE_PRIVATE);
+        token = pref.getString("token", "");
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +52,12 @@ public class LoginActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
+                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    String id = user.getUid();
+                                    pref = getSharedPreferences("pref", MODE_PRIVATE); //이렇게 호출해야됨
+                                    editor = pref.edit();
+                                    editor.putString("token", id);
+                                    editor.commit();
                                     Toast.makeText(getApplicationContext(), "로그인 성공", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                     startActivity(intent);

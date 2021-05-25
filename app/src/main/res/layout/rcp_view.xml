@@ -91,7 +91,6 @@
                     android:textSize="20sp" />
             </LinearLayout>
 
-
             <com.google.android.youtube.player.YouTubePlayerView
                 android:id="@+id/rcp_video"
                 android:layout_width="match_parent"
@@ -101,5 +100,4 @@
 
         </LinearLayout>
     </LinearLayout>
-
 </ScrollView>

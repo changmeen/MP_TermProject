@@ -20,6 +20,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.changmeen.R;
+import com.changmeen.community.communityActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     Ingredient_page ingredients;
     TodayMenu today_menu;
     ImageView ivSearch;
+    communityActivity community;
     NavigationView navigationView;
     ActionBarDrawerToggle barDrawerToggle;
 
@@ -108,12 +111,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.nav_email:
+                    case R.id.nav_email: {
                         //https://www.youtube.com/channel/UCyn-K7rZLXjGl7VXGweIlcA
                         startActivity(new Intent(Intent.ACTION_VIEW)
                                 .setData(Uri.parse("https://www.youtube.com/c/paikscuisine/featured")) // edit this url
                                 .setPackage("com.google.android.youtube"));    // do not edit
                         Toast.makeText(MainActivity.this, "Youtube", Toast.LENGTH_SHORT).show();
+                    }
+                    case R.id.nav_community:{
+                        Intent intent = new Intent(MainActivity.this, communityActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(intent);
+                    }
                 }
                 return false;
             }
