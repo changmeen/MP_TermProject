@@ -19,7 +19,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
-
 import cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager;
 
 public class TodayMenu extends Fragment {
@@ -40,12 +39,11 @@ public class TodayMenu extends Fragment {
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
                     Log.e("firebase", "Error getting data", task.getException());
-                }
-                else {
+                } else {
                     String readstr;
                     readstr = String.valueOf(task.getResult().getValue());
 
-                    while(readstr.indexOf("image") != -1){
+                    while (readstr.indexOf("image") != -1) {
                         int sidx = readstr.indexOf("image") + 6;
                         int eidx = readstr.indexOf(",");
 
@@ -53,7 +51,7 @@ public class TodayMenu extends Fragment {
 
                         readstr = readstr.substring(eidx);
 
-                        if(readstr.indexOf("image") != -1)
+                        if (readstr.indexOf("image") != -1)
                             readstr = readstr.substring(readstr.indexOf("image"));
                     }
 

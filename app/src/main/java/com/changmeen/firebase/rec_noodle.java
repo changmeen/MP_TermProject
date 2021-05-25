@@ -26,11 +26,11 @@ public class rec_noodle extends Fragment {
     private GridLayoutManager layoutManager;
     private static ArrayList<Recipe> itemArrayList;
 
-    public View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState){
+    public View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.rec_frag, container, false);
 
         recyclerView = view.findViewById(R.id.my_recycler_view);
-        layoutManager = new GridLayoutManager(getContext(),3);
+        layoutManager = new GridLayoutManager(getContext(), 3);
         recyclerView.setLayoutManager(layoutManager);
 
         itemArrayList = new ArrayList<>(); //레시피 객체를 담을 어레이리스트 (어댑터쪽으로)
@@ -48,6 +48,7 @@ public class rec_noodle extends Fragment {
                 adapter.notifyDataSetChanged();//리스트 저장 및 새로고침
 
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 //디비를 가져오던 중 에러 발생 시

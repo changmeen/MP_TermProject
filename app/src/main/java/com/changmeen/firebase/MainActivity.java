@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView ivSearch;
     NavigationView navigationView;
     ActionBarDrawerToggle barDrawerToggle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -64,32 +65,34 @@ public class MainActivity extends AppCompatActivity {
         whole_menu = new Whole_menu();
         ingredients = new Ingredient_page();
         today_menu = new TodayMenu();
-        getSupportFragmentManager().beginTransaction().replace(R.id.Layout1,today_menu).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.Layout1, today_menu).commit();
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 
-            @Override public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
-                switch (menuItem.getItemId()){
+                switch (menuItem.getItemId()) {
                     //menu_bottom.xml에서 지정해줬던 아이디 값을 받아와서 각 아이디값마다 다른 이벤트를 발생시킵니다.
-                    case R.id.tab1:{
-                        getSupportFragmentManager().beginTransaction() .replace(R.id.Layout1,today_menu).commit();
+                    case R.id.tab1: {
+                        getSupportFragmentManager().beginTransaction().replace(R.id.Layout1, today_menu).commit();
                         return true;
                     }
 
-                    case R.id.tab2:{
-                        getSupportFragmentManager().beginTransaction() .replace(R.id.Layout1,whole_menu).commit();
-
-                        return true;
-                    }
-
-                    case R.id.tab3:{
-                        getSupportFragmentManager().beginTransaction() .replace(R.id.Layout1,ingredients).commit();
+                    case R.id.tab2: {
+                        getSupportFragmentManager().beginTransaction().replace(R.id.Layout1, whole_menu).commit();
 
                         return true;
                     }
 
-                    default: return false;
+                    case R.id.tab3: {
+                        getSupportFragmentManager().beginTransaction().replace(R.id.Layout1, ingredients).commit();
+
+                        return true;
+                    }
+
+                    default:
+                        return false;
                 }
             }
         });
@@ -98,19 +101,19 @@ public class MainActivity extends AppCompatActivity {
         //삼선아이콘 모양
         barDrawerToggle.syncState();
 
-        navigationView=findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
 
         //네비게이션에서 유튜브 누르면 유튜브로 이동
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch(item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.nav_email:
                         //https://www.youtube.com/channel/UCyn-K7rZLXjGl7VXGweIlcA
                         startActivity(new Intent(Intent.ACTION_VIEW)
                                 .setData(Uri.parse("https://www.youtube.com/c/paikscuisine/featured")) // edit this url
-                                .setPackage("com.google.android.youtube"));	// do not edit
-                        Toast.makeText(MainActivity.this, "Youtube",Toast.LENGTH_SHORT).show();
+                                .setPackage("com.google.android.youtube"));    // do not edit
+                        Toast.makeText(MainActivity.this, "Youtube", Toast.LENGTH_SHORT).show();
                 }
                 return false;
             }
@@ -118,12 +121,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
     //뒤로가기 눌렀을 때
     @Override
     public void onBackPressed() {
-        if(getSupportFragmentManager().getBackStackEntryCount()==0) {
+        if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
             // AlertDialog 빌더를 이용해 종료시 발생시킬 창을 띄운다
             AlertDialog.Builder alBuilder = new AlertDialog.Builder(this);
             alBuilder.setMessage("종료하시겠습니까?");
@@ -144,18 +145,16 @@ public class MainActivity extends AppCompatActivity {
             });
             alBuilder.setTitle("프로그램 종료");
             alBuilder.show(); // AlertDialog.Bulider로 만든 AlertDialog를 보여준다.
-        }
-        else{
+        } else {
             super.onBackPressed();
         }
     }
 
 
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         barDrawerToggle.onOptionsItemSelected(item);
-        switch(item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.logout:
                 show();
                 break;
@@ -166,21 +165,21 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    void show()
-    {
+
+    void show() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("AlertDialog Title");
         builder.setMessage("AlertDialog Content");
         builder.setPositiveButton("예",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getApplicationContext(),"예를 선택했습니다.",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "예를 선택했습니다.", Toast.LENGTH_LONG).show();
                     }
                 });
         builder.setNegativeButton("아니오",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getApplicationContext(),"아니오를 선택했습니다.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "아니오를 선택했습니다.", Toast.LENGTH_LONG).show();
                     }
                 });
         builder.show();
@@ -189,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.tool_menu,menu);
+        menuInflater.inflate(R.menu.tool_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 

@@ -27,15 +27,15 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
 
-        Button loginButton = (Button)findViewById(R.id.LoginButton);
-        Button signUpButton = (Button)findViewById(R.id.SignUpButton);
+        Button loginButton = (Button) findViewById(R.id.LoginButton);
+        Button signUpButton = (Button) findViewById(R.id.SignUpButton);
         EditText ID = (EditText) findViewById(R.id.editTextTextPersonName);
         EditText PW = (EditText) findViewById(R.id.editTextTextPassword);
         mAuth = mAuth.getInstance();
 
-        loginButton.setOnClickListener(new View.OnClickListener(){
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 String email = ID.getText().toString();
                 String pw = PW.getText().toString();
 
@@ -56,9 +56,9 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        signUpButton.setOnClickListener(new View.OnClickListener(){
+        signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
                 startActivity(intent);
             }

@@ -16,20 +16,20 @@
         android:layout_width="150dp"
         android:layout_height="80dp"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        app:srcCompat="@drawable/bibimbap" />
+        app:srcCompat="@drawable/micon" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:textColor="@color/black"
-        android:text="담원기아"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:text="Copyright SW MP TEAM 2."
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/black" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:text="MSI 화이팅!" />
+        android:text="Version. 1.0.0"
+        android:textColor="@color/black" />
 </LinearLayout>

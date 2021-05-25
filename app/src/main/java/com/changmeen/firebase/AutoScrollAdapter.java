@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
@@ -30,7 +31,7 @@ public class AutoScrollAdapter extends PagerAdapter {
 
         //뷰페이지 슬라이딩 할 레이아웃 인플레이션
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(LAYOUT_INFLATER_SERVICE);
-        View v = inflater.inflate(R.layout.auto_viewpager,null);
+        View v = inflater.inflate(R.layout.auto_viewpager, null);
         ImageView image_container = (ImageView) v.findViewById(R.id.image_container);
         Glide.with(context).load(data.get(position)).into(image_container);
         container.addView(v);
@@ -40,7 +41,7 @@ public class AutoScrollAdapter extends PagerAdapter {
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
 
-        container.removeView((View)object);
+        container.removeView((View) object);
 
     }
 
