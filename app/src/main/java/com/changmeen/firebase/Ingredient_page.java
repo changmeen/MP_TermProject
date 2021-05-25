@@ -27,7 +27,7 @@ public class Ingredient_page extends Fragment {
 
     private RecyclerView recyclerView;
     private GridLayoutManager layoutManager;
-    private Ingredient_adapter adapter;
+    private Rfg_adapter adapter;
     private static ArrayList<Ingredients_list> itemArrayList;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState) {
@@ -48,6 +48,8 @@ public class Ingredient_page extends Fragment {
             }
         });
 
+        // 현재 전체 재료를 받아오는 부분 -> 내 냉장고에 있는 재료만 받아오게
+        // Ingredient_adapter 사용중 -> Rfg_adapter 사용
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("Ingredient").addValueEventListener(new ValueEventListener() {
             @Override
@@ -67,7 +69,7 @@ public class Ingredient_page extends Fragment {
                 Log.e("fragment1", String.valueOf(databaseError.toException()));
             }
         });
-        adapter = new Ingredient_adapter(itemArrayList, getContext());
+        adapter = new Rfg_adapter(itemArrayList, getContext());
         recyclerView.setAdapter(adapter);
         return view;
     }
