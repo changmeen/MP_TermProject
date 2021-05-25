@@ -2,26 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
-
-<!--    <item-->
-<!--        android:id="@+id/nav_memo"-->
-<!--        android:icon ="@drawable/bibimbap"-->
-<!--        android:title="정글은" />-->
-
-<!--    <item-->
-<!--        android:id="@+id/nav_homepage"-->
-<!--        android:icon="@drawable/bibimbap"-->
-<!--        android:title="저튜브" />-->
-<!--    <item-->
-<!--        android:id="@+id/nav_logout"-->
-<!--        android:icon="@drawable/unknown"-->
-<!--        android:title="앙 기모띠" />-->
+    
 
 
     <item android:title="Communicate">
         <menu>
             <item
                 android:id="@+id/nav_email"
+                android:icon="@drawable/icon_1"
                 android:title="Youtube" />
 
 <!--                android:icon="@drawable/youtubeicon"-->
