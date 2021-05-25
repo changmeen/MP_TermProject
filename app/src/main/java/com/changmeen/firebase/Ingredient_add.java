@@ -25,6 +25,8 @@ import java.util.ArrayList;
 public class Ingredient_add extends AppCompatActivity {
 
     public ArrayList<Ingredients_list> searchList;
+    private static ArrayList<Ingredients_list> itemArrayList;
+
 
     private Ingredient_adapter ingAdapter;
     private RecyclerView recyclerView;
@@ -38,10 +40,17 @@ public class Ingredient_add extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ingredient_add);
 
+        searchList = new ArrayList<>();
+        itemArrayList = new ArrayList<>();
+
         mDatabase = FirebaseDatabase.getInstance().getReference();
         recyclerView = findViewById(R.id.ingredient_search_list);
         searchView= (SearchView) findViewById(R.id.ingredient_search);
         layoutManager = new GridLayoutManager(this, 5);
+
+        recyclerView.setLayoutManager(layoutManager);
+
+        viewIngredient();
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -49,9 +58,9 @@ public class Ingredient_add extends AppCompatActivity {
                 SearchContents(query);
                 return false;
             }
-
             @Override
             public boolean onQueryTextChange(String newText) {
+                viewIngredient();
                 return false;
             }
         });
@@ -67,12 +76,9 @@ public class Ingredient_add extends AppCompatActivity {
                     Ingredients_list IngList = dataSnapshot.getValue(Ingredients_list.class);
                     if (IngList.getname().contains(text)) {
                         searchList.add(IngList);
-                        ingAdapter = new Ingredient_adapter(searchList, getApplicationContext());
                     }
-                    ingAdapter.notifyDataSetChanged();
                 }
-                recyclerView.setAdapter(ingAdapter);
-                recyclerView.setLayoutManager(layoutManager);
+                ingAdapter.notifyDataSetChanged();
 
                 Toast.makeText(Ingredient_add.this, "[검색버튼클릭] 검색어 = " + text, Toast.LENGTH_LONG).show();
 
@@ -82,5 +88,31 @@ public class Ingredient_add extends AppCompatActivity {
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
             }
         });
+
+        ingAdapter = new Ingredient_adapter(searchList, getApplicationContext());
+        recyclerView.setAdapter(ingAdapter);
+    }
+
+    public void viewIngredient(){
+        mDatabase.child("Ingredient").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                itemArrayList.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Ingredients_list rec = snapshot.getValue(Ingredients_list.class);
+                    itemArrayList.add(rec);
+                }
+                ingAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                Log.e("fragment1", String.valueOf(databaseError.toException()));
+            }
+        });
+        ingAdapter = new Ingredient_adapter(itemArrayList, getApplicationContext());
+        recyclerView.setAdapter(ingAdapter);
     }
 }
