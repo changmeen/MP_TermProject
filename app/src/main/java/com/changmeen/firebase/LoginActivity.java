@@ -21,8 +21,13 @@ public class LoginActivity extends AppCompatActivity {
 
     FirebaseAuth mAuth;
     private SharedPreferences pref;
-    private String token;
     private SharedPreferences.Editor editor;
+    private String token;
+    private EditText ID, PW;
+
+    SharedPreferences sh_Pref;
+    SharedPreferences.Editor toEdit;
+    String email, pw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +39,8 @@ public class LoginActivity extends AppCompatActivity {
 
         Button loginButton = (Button) findViewById(R.id.LoginButton);
         Button signUpButton = (Button) findViewById(R.id.SignUpButton);
-        EditText ID = (EditText) findViewById(R.id.editTextTextPersonName);
-        EditText PW = (EditText) findViewById(R.id.editTextTextPassword);
+        ID = (EditText) findViewById(R.id.editTextTextPersonName);
+        PW = (EditText) findViewById(R.id.editTextTextPassword);
         mAuth = mAuth.getInstance();
         pref = getSharedPreferences("pref", MODE_PRIVATE);
         token = pref.getString("token", "");
@@ -43,8 +48,10 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = ID.getText().toString();
-                String pw = PW.getText().toString();
+                email = ID.getText().toString();
+                pw = PW.getText().toString();
+
+                SharedPreference();
 
                 mAuth.signInWithEmailAndPassword(email, pw)
                         .addOnCompleteListener(com.changmeen.firebase.LoginActivity.this, new OnCompleteListener<AuthResult>() {
@@ -76,5 +83,25 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        applySharedPreference();
+    }
+
+    public void SharedPreference() {
+        sh_Pref = getSharedPreferences("Login Credentials", MODE_PRIVATE);
+        toEdit = sh_Pref.edit();
+        toEdit.putString("ID", email);
+        toEdit.putString("PW", pw);
+        toEdit.commit();
+    }
+
+    public void applySharedPreference() {
+        sh_Pref = getSharedPreferences("Login Credentials", MODE_PRIVATE);
+        if(sh_Pref != null && sh_Pref.contains("ID")) {
+            String id = sh_Pref.getString("ID", "no_id");
+            String pw = sh_Pref.getString("PW", "no_pw");
+            ID.setText(id);
+            PW.setText(pw);
+        }
     }
 }
