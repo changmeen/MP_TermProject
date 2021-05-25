@@ -1,4 +1,4 @@
-package com.changmeen.community;
+package com.changmeen.firebase;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,6 +14,8 @@ import androidx.appcompat.widget.AppCompatButton;
 import com.changmeen.firebase.R;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
+import com.changmeen.firebase.R;
+
 
 import java.util.List;
 

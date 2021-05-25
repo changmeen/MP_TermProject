@@ -114,4 +114,5 @@ public class Ingredient_add extends AppCompatActivity {
         ingAdapter = new Ingredient_adapter(itemArrayList, getApplicationContext());
         recyclerView.setAdapter(ingAdapter);
     }
+
 }

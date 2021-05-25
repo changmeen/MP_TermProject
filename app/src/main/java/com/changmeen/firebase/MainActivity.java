@@ -17,21 +17,16 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.changmeen.community.communityActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
     Whole_menu whole_menu;
-    Ingredient_page ingredients;
+    Rfg_page rfgPage;
     TodayMenu today_menu;
     ImageView ivSearch;
     communityActivity community;
@@ -65,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         whole_menu = new Whole_menu();
-        ingredients = new Ingredient_page();
+        rfgPage = new Rfg_page();
         today_menu = new TodayMenu();
         getSupportFragmentManager().beginTransaction().replace(R.id.Layout1, today_menu).commit();
 
@@ -88,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     case R.id.tab3: {
-                        getSupportFragmentManager().beginTransaction().replace(R.id.Layout1, ingredients).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.Layout1, rfgPage).commit();
 
                         return true;
                     }

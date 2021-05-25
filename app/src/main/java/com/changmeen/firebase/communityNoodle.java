@@ -1,4 +1,4 @@
-package com.changmeen.community;
+package com.changmeen.firebase;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.changmeen.firebase.R;
 
 
 public class communityNoodle extends Fragment {

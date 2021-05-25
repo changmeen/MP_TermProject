@@ -1,9 +1,10 @@
-package com.changmeen.community;
+package com.changmeen.firebase;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.changmeen.firebase.R;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

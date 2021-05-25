@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".firebase.Ingredient_add">
+    tools:context=".Ingredient_add">
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/ingredient_search"
@@ -14,7 +14,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:gravity="center_horizontal"
-        app:queryHint="음식 재료를 입력하세요!" />
+        app:queryHint="음식 재료를 입력하세요!"
+        android:background="@drawable/searchvie_shape"
+        android:theme="@style/searchviewTheme"/>
 
     <LinearLayout
         android:layout_width="match_parent"

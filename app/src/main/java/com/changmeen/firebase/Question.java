@@ -1,4 +1,4 @@
-package com.changmeen.community;
+package com.changmeen.firebase;
 import lombok.Data;
 
 @Data

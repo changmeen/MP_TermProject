@@ -1,4 +1,4 @@
-package com.changmeen.community;
+package com.changmeen.firebase;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -7,15 +7,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.changmeen.firebase.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.List;
 
 public class communitySearch extends AppCompatActivity {
     private ImageView ivBack;
