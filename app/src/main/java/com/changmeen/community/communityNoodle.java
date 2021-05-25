@@ -9,8 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.changmeen.R;
-
 public class communityNoodle extends Fragment {
 
     private RecyclerView recyclerView;
