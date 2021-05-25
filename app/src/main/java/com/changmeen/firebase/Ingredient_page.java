@@ -39,6 +39,15 @@ public class Ingredient_page extends Fragment {
 
         itemArrayList = new ArrayList<>();
 
+        FloatingActionButton fab = view.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), Ingredient_add.class);
+                startActivityForResult(intent, 0);
+            }
+        });
+
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("Ingredient").addValueEventListener(new ValueEventListener() {
             @Override

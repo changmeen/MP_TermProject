@@ -62,8 +62,7 @@ public class Ingredient_adapter extends RecyclerView.Adapter<Ingredient_adapter.
         holder.rProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(v.getContext(), receipeActivity.class);
-                v.getContext().startActivity(intent);
+
             }
         });
     }
