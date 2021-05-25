@@ -83,7 +83,6 @@ public class Ingredient_add extends AppCompatActivity {
                 Toast.makeText(Ingredient_add.this, "[검색버튼클릭] 검색어 = " + text, Toast.LENGTH_LONG).show();
 
             }
-
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
             }
