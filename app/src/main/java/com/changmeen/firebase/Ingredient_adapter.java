@@ -48,7 +48,7 @@ public class Ingredient_adapter extends RecyclerView.Adapter<Ingredient_adapter.
         }
     }
 
-    // 생성자 - 넘어 오는 데이터파입에 유의해야 한다.
+    // 생성자 - 넘어 오는 데이터타입에 유의해야 한다.
     public Ingredient_adapter(ArrayList<Ingredients_list> myDataset) {
         arrayList = myDataset;
     }
@@ -99,7 +99,6 @@ public class Ingredient_adapter extends RecyclerView.Adapter<Ingredient_adapter.
 
     @Override
     public int getItemCount() {
-
         return (arrayList != null ? arrayList.size() : 0);
     }
 }
