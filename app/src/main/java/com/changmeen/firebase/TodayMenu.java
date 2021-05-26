@@ -19,12 +19,11 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
-import cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager;
+
 
 public class TodayMenu extends Fragment {
 
     private DatabaseReference mDatabase;
-    AutoScrollViewPager autoScrollViewPager;
     ArrayList<String> data = new ArrayList<>();
 
     @Override
@@ -55,12 +54,7 @@ public class TodayMenu extends Fragment {
                             readstr = readstr.substring(readstr.indexOf("image"));
                     }
 
-                    autoScrollViewPager = (AutoScrollViewPager) v.findViewById(R.id.autoViewPager);
 
-                    AutoScrollAdapter scrollAdapter = new AutoScrollAdapter(getActivity(), data);
-                    autoScrollViewPager.setAdapter(scrollAdapter); //Auto Viewpager에 Adapter 장착
-                    autoScrollViewPager.setInterval(3000); // 페이지 넘어갈 시간 간격 설정
-                    autoScrollViewPager.startAutoScroll(); //Auto Scroll 시작
                 }
             }
         });

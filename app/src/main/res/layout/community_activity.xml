@@ -7,17 +7,16 @@
 
     <include layout="@layout/toolbar_community"/>
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabs_community"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabMode="fixed"
-        app:tabTextColor="@color/black"
-        app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget" />
+        android:text="안녕하세요"
+        android:textSize="20dp"
+        android:layout_margin="5dp"/>
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/vp_container"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/Community_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

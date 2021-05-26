@@ -61,8 +61,10 @@ public class LoginActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     FirebaseUser user = mAuth.getCurrentUser();
                                     String id = user.getUid();
+                                    String username = email;
                                     pref = getSharedPreferences("pref", MODE_PRIVATE); //이렇게 호출해야됨
                                     editor = pref.edit();
+                                    editor.putString("UserName", username);
                                     editor.putString("token", id);
                                     editor.commit();
                                     Toast.makeText(getApplicationContext(), "로그인 성공", Toast.LENGTH_SHORT).show();
