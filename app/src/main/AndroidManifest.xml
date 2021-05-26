@@ -12,6 +12,7 @@
 
         <activity android:name=".Ingredient_page"></activity>
         <activity android:name=".RecipeSearch"></activity>
+        <activity android:name=".Profile_edit"></activity>
         <activity android:name=".Profile_activity"></activity>
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".SignUpActivity"></activity>

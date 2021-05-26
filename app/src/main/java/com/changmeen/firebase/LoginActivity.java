@@ -34,8 +34,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-      //  Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-      //   startActivity(intent);
+//        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//        startActivity(intent);
 
         Button loginButton = (Button) findViewById(R.id.LoginButton);
         Button signUpButton = (Button) findViewById(R.id.SignUpButton);

@@ -53,6 +53,7 @@ public class Ingredient_adapter extends RecyclerView.Adapter<Ingredient_adapter.
         arrayList = myDataset;
     }
 
+    // 리스튜뷰가 어뎁터에 연결된 다음에 뷰 홀더를 최더를 최초로 만들어냄
     @Override
     public Ingredient_adapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
@@ -62,6 +63,7 @@ public class Ingredient_adapter extends RecyclerView.Adapter<Ingredient_adapter.
         return holder;
     }
 
+    //매칭을 시켜주는 역할
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
