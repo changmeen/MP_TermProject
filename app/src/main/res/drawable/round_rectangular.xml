@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Fragment4에서 재료 표시해주는 테두리-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_focused="false" android:state_pressed="false">
+        <shape>
+            <!--            배경색-->
+            <solid android:color="#FFFFFF"/>
+            <!--            테두리-->
+            <stroke android:color="#848484"
+                android:width="1dp"/>
+            <!--            모서리-->
+            <corners android:radius="15dp"/>
+        </shape>
+    </item>
+</selector>
