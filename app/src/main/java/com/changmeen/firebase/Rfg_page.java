@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class Rfg_page extends Fragment {
-    //왜 안들어가짐
+    //왜 안들어가짐 ㅡㅡ
 
     private RecyclerView listview1;
     private RecyclerView listview2;
