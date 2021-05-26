@@ -28,6 +28,7 @@ public class Ingredient_page extends AppCompatActivity {
     private GridLayoutManager layoutManager;
     private Rfg_adapter adapter;
     private static ArrayList<Ingredients_list> itemArrayList;
+    private static ArrayList<rec_adapter> itemArrayList1;
     private SharedPreferences prefer;
 
     @Override

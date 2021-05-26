@@ -3,13 +3,23 @@ package com.changmeen.firebase;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,13 +27,13 @@ import java.util.List;
 
 public class communityActivity extends AppCompatActivity {
 
-    public static List<String> category;
     ImageView ivBack, ivWrite, ivSearch;
-    TextView tvToolbarTitle;
-    ViewPager vpContainer;
-    TabLayout tab_community;
+    RecyclerView community_list;
     String token;
     SharedPreferences pref;
+    private RecyclerView.LayoutManager layoutManager;
+    private communityAdapter communityAdapter;
+    private ArrayList<Community_Data> communities;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +42,6 @@ public class communityActivity extends AppCompatActivity {
 
         ivBack = findViewById(R.id.iv_back);
 
-        category = new ArrayList<>(Arrays.asList(new String[]{"# 밥류", "# 면류"}));
         pref = getSharedPreferences("pref", MODE_PRIVATE);
         token = pref.getString("token", "");
 
@@ -59,32 +68,29 @@ public class communityActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        vpContainer = findViewById(R.id.vp_container);
-        tab_community = findViewById(R.id.tabs_community);
+        community_list = findViewById(R.id.Community_list);
+        layoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL, false);
+        community_list.setLayoutManager(layoutManager);
 
-        tab_community.addTab(tab_community.newTab().setText("# 밥류"));
-        tab_community.addTab(tab_community.newTab().setText("# 면류"));
+        communities = new ArrayList<>();
 
-        communityPager pager = new communityPager(getSupportFragmentManager(), 2);
-        vpContainer.setAdapter(pager);
-
-        tab_community.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("Post").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                vpContainer.setCurrentItem(tab.getPosition());
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                communities.clear();
+                for(DataSnapshot dataSnapshot: snapshot.getChildren()) {
+                    Community_Data data = dataSnapshot.getValue(Community_Data.class);
+                    communities.add(data);
+                }
+                communityAdapter.notifyDataSetChanged();
             }
-
             @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                Log.d("실패", "onFailure: 실패");
             }
         });
-        vpContainer.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tab_community));
+        communityAdapter = new communityAdapter(communities,getApplicationContext());
+        community_list.setAdapter(communityAdapter);
     }
-
 }

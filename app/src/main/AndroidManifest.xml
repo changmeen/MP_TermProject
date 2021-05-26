@@ -20,6 +20,8 @@
         <activity android:name=".communityActivity"></activity>
         <activity android:name=".communitySearch"></activity>
         <activity android:name=".communityWrite"></activity>
+        <activity android:name=".communityContents"></activity>
+
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
