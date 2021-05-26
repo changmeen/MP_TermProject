@@ -32,6 +32,7 @@ public class rec_adapter extends RecyclerView.Adapter<rec_adapter.ViewHolder> {
         public ViewHolder(View v) {
             super(v);
 
+            // rcp_item XML
             this.rName = v.findViewById(R.id.rcp_RecyclerView_TextView);
             this.rProfile = v.findViewById(R.id.rcp_RecyclerView_ImageView);
         }

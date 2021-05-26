@@ -43,8 +43,6 @@ public class Profile_activity extends AppCompatActivity {
         nicknameText.setText(nickname);
 
 
-
-
         init();
         getData();
 

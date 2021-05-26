@@ -28,7 +28,7 @@ public class Ingredient_adapter extends RecyclerView.Adapter<Ingredient_adapter.
     private Intent intent;
     private SharedPreferences prefer;
     private final FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-    private final DatabaseReference databaseReference = firebaseDatabase.getReference();
+    private final DatabaseReference databaseReference = firebaseDatabase.getReference();// 데이터베이스에서 데이터를 읽거나 쓰려면 DatabaseReference의 인스턴스가 필요합니다.
 
     public Ingredient_adapter(ArrayList<Ingredients_list> arrayList, Context context) {
         this.arrayList = arrayList;
@@ -43,6 +43,7 @@ public class Ingredient_adapter extends RecyclerView.Adapter<Ingredient_adapter.
         public ViewHolder(View v) {
             super(v);
 
+            // ingredient_item XML
             this.rName = v.findViewById(R.id.Ing_RecyclerView_TextView);
             this.rProfile = v.findViewById(R.id.Ing_RecyclerView_ImageView);
         }
