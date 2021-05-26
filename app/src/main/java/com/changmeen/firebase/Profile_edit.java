@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,7 @@ public class Profile_edit extends AppCompatActivity {
     private EditText nickname_edit;
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
+    private ImageView ivBack;
 
     String nickname;
 
@@ -27,6 +29,11 @@ public class Profile_edit extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.account_edit);
+
+        ivBack = findViewById(R.id.iv_back);
+        ivBack.setOnClickListener(v -> {
+            finish();
+        });
 
         nickname_edit = findViewById(R.id.editNickname);
         confirm_button = findViewById(R.id.btn_edit_profile);

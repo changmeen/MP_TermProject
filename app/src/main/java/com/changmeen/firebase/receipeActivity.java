@@ -17,7 +17,7 @@ public class receipeActivity extends YouTubeBaseActivity {
     private ImageView rProfile;
     private TextView rIngredient;
     private TextView rRecipe;
-
+    private ImageView ivBack;
     YouTubePlayerView playerView;
     YouTubePlayer.OnInitializedListener listener;
 
@@ -30,6 +30,12 @@ public class receipeActivity extends YouTubeBaseActivity {
     protected void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
         setContentView(R.layout.rcp_view);
+
+        // 뒤로가기 버튼 누르면 뒤로가짐
+        ivBack = findViewById(R.id.iv_back);
+        ivBack.setOnClickListener(v -> {
+            finish();
+        });
 
         rName = (TextView) findViewById(R.id.rcp_name);
         rIngredient = (TextView) findViewById(R.id.rcp_ingredient);
