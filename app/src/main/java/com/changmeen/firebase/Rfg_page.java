@@ -73,11 +73,13 @@ public class Rfg_page extends Fragment {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Ingredients_list rec = snapshot.getValue(Ingredients_list.class);
                     ingredients_itemArrayList.add(rec);
-                    Ingredient_name = Ingredient_name.concat(" " + rec.getname());;
+                    Ingredient_name = Ingredient_name.concat(rec.getname() + " ");;
                 }
                 adapter1.notifyDataSetChanged();
                 String[] a = Ingredient_name.split(" ");
                 System.out.println("@@@@@@@@@@@@@@@@@" + a[0]);
+                System.out.println("@@@@@@@@@@@@@@@@@" + a[1]);
+                System.out.println("@@@@@@@@@@@@@@@@@" + a[2]);
             }
 
             @Override
