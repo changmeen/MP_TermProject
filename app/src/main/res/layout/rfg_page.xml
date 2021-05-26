@@ -8,20 +8,20 @@
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="100dp"
         android:orientation="horizontal"
         android:background="@drawable/round_rectangular">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rfg_RecyclerView"
             android:layout_width="330dp"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:scrollbars="none"
             android:layout_margin="10dp" />
         <ImageButton
             android:id="@+id/rfg_Button"
             android:layout_width="40dp"
             android:layout_gravity="center"
-            android:layout_height="40dp"
+            android:layout_height="60dp"
             android:src="@drawable/right"
             android:scaleType="centerInside"
             android:background="#00000000"/>
@@ -34,7 +34,7 @@
         android:text="지금 바로 만들 수 있어요!"
         android:textSize="20sp"/>
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rgh_RecyclerView_rcp_list"
+        android:id="@+id/rfg_RecyclerView_rcp_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none"/>

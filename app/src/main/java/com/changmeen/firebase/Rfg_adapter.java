@@ -62,7 +62,6 @@ public class Rfg_adapter extends RecyclerView.Adapter<Rfg_adapter.ViewHolder> {
         return holder;
     }
 
-
     @Override
     public void onBindViewHolder(Rfg_adapter.ViewHolder holder, int position) {
         // - get element from your dataset at this position
@@ -99,7 +98,6 @@ public class Rfg_adapter extends RecyclerView.Adapter<Rfg_adapter.ViewHolder> {
     }
     @Override
     public int getItemCount() {
-
         return (arrayList != null ? arrayList.size() : 0);
     }
 
