@@ -1,6 +1,7 @@
 package com.changmeen.firebase;
 
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -35,6 +36,7 @@ public class RecipeSearch extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipe_search);
+        //hojin
 
         arrayList = new ArrayList<>();
         recyclerView = findViewById(R.id.recipe_search_list);
@@ -70,4 +72,6 @@ public class RecipeSearch extends AppCompatActivity {
             }
         });
     }
+
+
 }
