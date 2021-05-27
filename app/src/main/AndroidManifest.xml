@@ -12,6 +12,7 @@
 
         <activity android:name=".Ingredient_page"></activity>
         <activity android:name=".RecipeSearch"></activity>
+        <activity android:name=".Profile_edit"></activity>
         <activity android:name=".Profile_activity"></activity>
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".SignUpActivity"></activity>
@@ -20,6 +21,8 @@
         <activity android:name=".communityActivity"></activity>
         <activity android:name=".communitySearch"></activity>
         <activity android:name=".communityWrite"></activity>
+        <activity android:name=".communityContents"></activity>
+
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

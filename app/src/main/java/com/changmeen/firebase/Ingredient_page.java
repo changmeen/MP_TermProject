@@ -28,6 +28,7 @@ public class Ingredient_page extends AppCompatActivity {
     private GridLayoutManager layoutManager;
     private Rfg_adapter adapter;
     private static ArrayList<Ingredients_list> itemArrayList;
+    private static ArrayList<rec_adapter> itemArrayList1;
     private SharedPreferences prefer;
 
     @Override
@@ -52,6 +53,7 @@ public class Ingredient_page extends AppCompatActivity {
         prefer = getSharedPreferences("pref", Context.MODE_PRIVATE);
         String userToken = prefer.getString("token", "");
 
+
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("userIngredient").child(userToken).addValueEventListener(new ValueEventListener() {
             @Override
@@ -67,7 +69,8 @@ public class Ingredient_page extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.e("fragment3", String.valueOf(databaseError.toException()));
+
+                Log.e("fragment1", String.valueOf(databaseError.toException()));
             }
         });
         adapter = new Rfg_adapter(itemArrayList, this);

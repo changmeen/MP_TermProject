@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
+    <include layout="@layout/toolbar_account" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -59,41 +59,29 @@
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="28dp"
+                    android:layout_marginTop="20dp"
                     android:text="이름"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/photo" />
 
-                <!--        <Button-->
-                <!--            android:id="@+id/button"-->
-                <!--            android:layout_width="65dp"-->
-                <!--            android:layout_height="36dp"-->
-                <!--            android:layout_marginStart="65dp"-->
-                <!--            android:layout_marginLeft="65dp"-->
-                <!--            android:layout_marginTop="28dp"-->
-                <!--            android:text="편집"-->
-                <!--            app:layout_constraintEnd_toEndOf="parent"-->
-                <!--            app:layout_constraintHorizontal_bias="0.0"-->
-                <!--            app:layout_constraintStart_toEndOf="@+id/photo"-->
-                <!--            app:layout_constraintTop_toBottomOf="@+id/cover" />-->
+                <!--                <androidx.appcompat.widget.AppCompatButton-->
+<!--                    android:id="@+id/btn_edit_profile"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="12dp"-->
+<!--                    android:layout_marginBottom="128dp"-->
+<!--                    android:text="Edit Profile"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/photo"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/cover">-->
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_edit_profile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginBottom="128dp"
-                    android:text="Edit Profile"
-                    android:textAllCaps="false"
-                    android:textColor="@color/black"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/photo"
-                    app:layout_constraintTop_toBottomOf="@+id/cover">
-
-                </androidx.appcompat.widget.AppCompatButton>
+<!--                </androidx.appcompat.widget.AppCompatButton>-->
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.recyclerview.widget.RecyclerView

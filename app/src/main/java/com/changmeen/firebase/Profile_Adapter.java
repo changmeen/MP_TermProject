@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class Profile_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     // adapter에 들어갈 list 입니다.
-    private ArrayList<DataBookmark> listData = new ArrayList<>();
+    private ArrayList<Profile_item> listData = new ArrayList<>();
 
     // Item의 클릭 상태를 저장할 array 객체
     private SparseBooleanArray selectedItems = new SparseBooleanArray();
@@ -23,15 +23,15 @@ public class Profile_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_bookmark, parent, false);
-        return new ViewHolderBookmark(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.account_item, parent, false);
+        return new Profile_viewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
-        ViewHolderBookmark ViewHolderBookmark = (ViewHolderBookmark)holder;
-        ViewHolderBookmark.onBind(listData.get(position),position, selectedItems);
-        ViewHolderBookmark.setOnViewHolderItemClickListener(new OnViewHolderItemClickListener() {
+        Profile_viewHolder Profile_viewHolder = (Profile_viewHolder)holder;
+        Profile_viewHolder.onBind(listData.get(position),position, selectedItems);
+        Profile_viewHolder.setOnViewHolderItemClickListener(new OnViewHolderItemClickListener() {
             @Override
             public void onViewHolderItemClick() {
                 if (selectedItems.get(position)) {
@@ -57,7 +57,7 @@ public class Profile_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return listData.size();
     }
 
-    void addItem(DataBookmark data) {
+    void addItem(Profile_item data) {
         // 외부에서 item을 추가시킬 함수입니다.
         listData.add(data);
     }

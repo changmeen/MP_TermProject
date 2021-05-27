@@ -1,10 +1,10 @@
 package com.changmeen.firebase;
 
-public class DataBookmark {
+public class Profile_item {
     int image;
     String title;
 
-    public DataBookmark(int image, String title){
+    public Profile_item(int image, String title){
         this.image = image;
         this.title = title;
     }

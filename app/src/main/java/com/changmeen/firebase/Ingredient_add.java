@@ -112,7 +112,7 @@ public class Ingredient_add extends AppCompatActivity {
             }
         });
         ingAdapter = new Ingredient_adapter(itemArrayList, getApplicationContext());
-        recyclerView.setAdapter(ingAdapter);
+        recyclerView.setAdapter(ingAdapter); //리사이클뷰에 어댑터 연결
     }
 
 }

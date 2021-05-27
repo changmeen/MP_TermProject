@@ -10,21 +10,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ViewHolderBookmark extends  RecyclerView.ViewHolder {
+public class Profile_viewHolder extends  RecyclerView.ViewHolder {
 
-    TextView tv_movie_title;
-    ImageView iv_movie,iv_movie2;
+    TextView itemName;
+    ImageView itemImage1, itemImage2;
     LinearLayout linearlayout;
 
     OnViewHolderItemClickListener onViewHolderItemClickListener;
 
 
-    public ViewHolderBookmark(@NonNull View itemView) {
+    public Profile_viewHolder(@NonNull View itemView) {
         super(itemView);
 
-        iv_movie = itemView.findViewById(R.id.iv_movie);
-        tv_movie_title = itemView.findViewById(R.id.tv_movie_title);
-        iv_movie2 = itemView.findViewById(R.id.iv_movie2);
+        itemImage1 = itemView.findViewById(R.id.itemImage);
+        itemName = itemView.findViewById(R.id.itemName);
+        itemImage2 = itemView.findViewById(R.id.itemImage2);
         linearlayout = itemView.findViewById(R.id.linearlayout);
 
         linearlayout.setOnClickListener(new View.OnClickListener() {
@@ -35,10 +35,10 @@ public class ViewHolderBookmark extends  RecyclerView.ViewHolder {
         });
     }
 
-    public void onBind(DataBookmark data,int position, SparseBooleanArray selectedItems){
-        tv_movie_title.setText(data.getTitle());
-        iv_movie.setImageResource(data.getImage());
-        iv_movie2.setImageResource(data.getImage());
+    public void onBind(Profile_item data, int position, SparseBooleanArray selectedItems){
+        itemName.setText(data.getTitle());
+        itemImage1.setImageResource(data.getImage());
+        itemImage2.setImageResource(data.getImage());
         changeVisibility(selectedItems.get(position));
     }
 
@@ -51,10 +51,10 @@ public class ViewHolderBookmark extends  RecyclerView.ViewHolder {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 // imageView의 높이 변경
-                iv_movie2.getLayoutParams().height = (int) animation.getAnimatedValue();
-                iv_movie2.requestLayout();
+                itemImage2.getLayoutParams().height = (int) animation.getAnimatedValue();
+                itemImage2.requestLayout();
                 // imageView가 실제로 사라지게하는 부분
-                iv_movie2.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+                itemImage2.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
             }
         });
         // Animation start

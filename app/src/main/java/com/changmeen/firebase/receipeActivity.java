@@ -17,7 +17,7 @@ public class receipeActivity extends YouTubeBaseActivity {
     private ImageView rProfile;
     private TextView rIngredient;
     private TextView rRecipe;
-
+    private ImageView ivBack;
     YouTubePlayerView playerView;
     YouTubePlayer.OnInitializedListener listener;
 
@@ -31,13 +31,20 @@ public class receipeActivity extends YouTubeBaseActivity {
         super.onCreate(savedInstance);
         setContentView(R.layout.rcp_view);
 
-        rName = (TextView) findViewById(R.id.rcp_name);
-        rIngredient = (TextView) findViewById(R.id.rcp_ingredient);
-        rRecipe = (TextView) findViewById(R.id.rcp_recipe);
-        rProfile = (ImageView) findViewById(R.id.rcp_ImageView);
+        // 뒤로가기 버튼 누르면 뒤로가짐
+        ivBack = findViewById(R.id.iv_back);
+        ivBack.setOnClickListener(v -> {
+            finish();
+        });
 
-        intent = getIntent();
-        recipe = (Recipe) intent.getSerializableExtra("list");
+        // rpc_view XML
+        rName = (TextView) findViewById(R.id.rcp_name);//음식 이름
+        rIngredient = (TextView) findViewById(R.id.rcp_ingredient);//음식 재료
+        rRecipe = (TextView) findViewById(R.id.rcp_recipe);// 만드는 법
+        rProfile = (ImageView) findViewById(R.id.rcp_ImageView); //맨 위사진
+
+        intent = getIntent();//rec_adapter.java
+        recipe = (Recipe) intent.getSerializableExtra("list");//rec_adapter에서 넘겨받은 객체
 
         rName.setText(recipe.getName());
         rIngredient.setText(recipe.getIngredient());
@@ -47,7 +54,7 @@ public class receipeActivity extends YouTubeBaseActivity {
                 .into(rProfile);
 
         videoId = recipe.getRecUrl();
-        playerView = findViewById(R.id.rcp_video);
+        playerView = findViewById(R.id.rcp_video);//유튜브 영상
         listener = new YouTubePlayer.OnInitializedListener() {
 
             @Override
