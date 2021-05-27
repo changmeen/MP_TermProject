@@ -1,27 +1,20 @@
 package com.changmeen.firebase;
 
-public class Profile_item {
-    int image;
-    String title;
+import java.io.Serializable;
 
-    public Profile_item(int image, String title){
-        this.image = image;
-        this.title = title;
-    }
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-    public int getImage() {
-        return image;
-    }
 
-    public void setImage(int image) {
-        this.image = image;
-    }
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class Profile_item implements Serializable {
 
-    public String getTitle() {
-        return title;
-    }
+    private String name;
+    private String image;
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
 }

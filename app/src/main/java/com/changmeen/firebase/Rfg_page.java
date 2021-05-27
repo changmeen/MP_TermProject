@@ -65,6 +65,7 @@ public class Rfg_page extends Fragment {
         String userToken = prefer.getString("token", "");
 
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference mDatabase2 = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("userIngredient").child(userToken).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -78,6 +79,19 @@ public class Rfg_page extends Fragment {
                 adapter1.notifyDataSetChanged();
                 String[] a = Ingredient_name.split(" ");
                 System.out.println("@@@@@@@@@@@@@@@@@" + a[0]);
+
+
+                mDatabase2.child("userIngredient").child(userToken).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
 
             @Override
