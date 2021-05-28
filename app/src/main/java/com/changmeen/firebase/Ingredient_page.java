@@ -75,5 +75,6 @@ public class Ingredient_page extends AppCompatActivity {
         });
         adapter = new Rfg_adapter(itemArrayList, this);
         recyclerView.setAdapter(adapter);
+
     }
 }

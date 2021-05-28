@@ -6,7 +6,7 @@
                 app:showAsAction="always"
                 android:enabled="true"
                 android:checked="true"
-                android:icon="@drawable/whole_menu"
+                android:icon="@drawable/icon_favorite"
                 android:title="오늘 뭐먹지" />
 
             <item
@@ -21,7 +21,7 @@
             <item
             android:id="@+id/tab3"
             app:showAsAction="always"
-            android:icon="@drawable/whole_menu"
+            android:icon="@drawable/icon_refridgerator"
             android:enabled="true"
             android:checked="true"
             android:title="냉장고" />
