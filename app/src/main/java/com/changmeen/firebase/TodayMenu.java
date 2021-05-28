@@ -1,5 +1,6 @@
 package com.changmeen.firebase;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,12 +27,18 @@ import java.lang.reflect.Array;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class TodayMenu extends Fragment {
 
     private DatabaseReference mDatabase;
-    ArrayList<String> data = new ArrayList<>();
+
+    ArrayList<String> image= new ArrayList<>();
+    ArrayList<String> name = new ArrayList<>();
+    ArrayList<String> ingredient = new ArrayList<>();
+    ArrayList<String> rec = new ArrayList<>();
+    ArrayList<String> url = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -52,16 +59,31 @@ public class TodayMenu extends Fragment {
                     String readstr;
                     readstr = String.valueOf(task.getResult().getValue());
 
-                    while (readstr.indexOf("image") != -1) {
-                        int sidx = readstr.indexOf("image") + 6;
-                        int eidx = readstr.indexOf(",");
+                    String noodle = readstr.substring(readstr.indexOf("Noodle") + 8, readstr.indexOf("Rice"));
+                    String rice = readstr.substring(readstr.indexOf("Rice") + 6, readstr.length());
 
-                        data.add(readstr.substring(sidx, eidx));
+                    while (noodle.indexOf("{") != -1) {
 
-                        readstr = readstr.substring(eidx);
+                        image.add(noodle.substring(noodle.indexOf("image") + 6, noodle.indexOf("ingredient") - 2));
+                        ingredient.add(noodle.substring(noodle.indexOf("ingredient") + 11, noodle.indexOf("name") - 2));
+                        name.add(noodle.substring(noodle.indexOf("name") + 5, noodle.indexOf("recipe") - 2));
+                        rec.add(noodle.substring(noodle.indexOf("recipe") + 7, noodle.indexOf("recUrl") - 2));
+                        url.add(noodle.substring(noodle.indexOf("recUrl") + 7, noodle.indexOf("}")));
 
-                        if (readstr.indexOf("image") != -1)
-                            readstr = readstr.substring(readstr.indexOf("image"));
+                        noodle = noodle.substring(noodle.indexOf("}")+1);
+
+                    }
+
+                    while (rice.indexOf("{") != -1) {
+
+                        image.add(rice.substring(rice.indexOf("image") + 6, rice.indexOf("ingredient") - 2));
+                        ingredient.add(rice.substring(rice.indexOf("ingredient") + 11, rice.indexOf("name") - 2));
+                        name.add(rice.substring(rice.indexOf("name") + 5, rice.indexOf("recipe") - 2));
+                        rec.add(rice.substring(rice.indexOf("recipe") + 7, rice.indexOf("recUrl") - 2));
+                        url.add(rice.substring(rice.indexOf("recUrl") + 7, rice.indexOf("}")));
+
+                        rice = rice.substring(rice.indexOf("}")+1);
+
                     }
 
                     recommend_btn.setVisibility(View.VISIBLE);
@@ -73,14 +95,29 @@ public class TodayMenu extends Fragment {
             @Override
             public void onClick(View view) {
 
-                int rand = (int) Math.random() * data.size();
+                Random random = new Random();
+                int rand = random.nextInt(image.size());
 
-                String url = data.get(rand);
+                String temp = image.get(rand);
+                Glide.with(view.getContext()).load(temp).into(recommend_rec);
 
-                data.remove(rand);
-                data.add(url);
+                recommend_rec.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view2) {
+                        Intent intent = new Intent(view2.getContext(), receipeActivity.class);
+                        Recipe recipe = new Recipe();
 
-                Glide.with(view.getContext()).load(url).into(recommend_rec);
+                        recipe.setImage(image.get(rand));
+                        recipe.setName(name.get(rand));
+                        recipe.setIngredient(ingredient.get(rand));
+                        recipe.setRecipe(rec.get(rand));
+                        recipe.setRecUrl(url.get(rand));
+
+                        intent.putExtra("list", recipe);
+
+                        view2.getContext().startActivity(intent);
+                    }
+                });
 
             }
         });
