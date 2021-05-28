@@ -74,6 +74,18 @@ public class TodayMenu extends Fragment {
 
                     }
 
+                    while (rice.indexOf("{") != -1) {
+
+                        image.add(rice.substring(rice.indexOf("image") + 6, rice.indexOf("ingredient") - 2));
+                        ingredient.add(rice.substring(rice.indexOf("ingredient") + 11, rice.indexOf("name") - 2));
+                        name.add(rice.substring(rice.indexOf("name") + 5, rice.indexOf("recipe") - 2));
+                        rec.add(rice.substring(rice.indexOf("recipe") + 7, rice.indexOf("recUrl") - 2));
+                        url.add(rice.substring(rice.indexOf("recUrl") + 7, rice.indexOf("}")));
+
+                        rice = rice.substring(rice.indexOf("}")+1);
+
+                    }
+
                     recommend_btn.setVisibility(View.VISIBLE);
                 }
             }
