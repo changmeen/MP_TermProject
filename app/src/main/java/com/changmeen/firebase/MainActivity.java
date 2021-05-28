@@ -111,12 +111,16 @@ public class MainActivity extends AppCompatActivity {
                                 .setData(Uri.parse("https://www.youtube.com/c/paikscuisine/featured")) // edit this url
                                 .setPackage("com.google.android.youtube"));    // do not edit
                         Toast.makeText(MainActivity.this, "Youtube", Toast.LENGTH_SHORT).show();
+                        break;
                     }
                     case R.id.nav_community:{
                         Intent intent = new Intent(MainActivity.this, communityActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent);
+                        break;
                     }
+                    default:
+                        break;
                 }
                 return false;
             }
