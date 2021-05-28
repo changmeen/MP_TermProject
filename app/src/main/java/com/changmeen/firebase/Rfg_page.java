@@ -26,6 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Rfg_page extends Fragment {
     //왜 안들어가짐
@@ -40,9 +41,12 @@ public class Rfg_page extends Fragment {
     private Context mContext;
 
     private static ArrayList<Ingredients_list> ingredients_itemArrayList;
+    private static ArrayList<Recipe> ingredients_per_recipe;
     private static ArrayList<Recipe> recipe_itemArrayList;
     private SharedPreferences prefer;
     String Ingredient_name="";
+    String Ingredient_per_name="";
+    int same = 0;
 
     View view;
 
@@ -54,18 +58,18 @@ public class Rfg_page extends Fragment {
         rfg_RecyclerView = view.findViewById(R.id.rfg_RecyclerView);
         rfg_RecyclerView_rcp_list = view.findViewById(R.id.rfg_RecyclerView_rcp_list);
         LinearLayoutManager = new LinearLayoutManager(view.getContext(), RecyclerView.HORIZONTAL, false);
-        GridlayoutManager = new GridLayoutManager(view.getContext(), 5);
+        GridlayoutManager = new GridLayoutManager(view.getContext(), 3);
         rfg_RecyclerView.setLayoutManager(LinearLayoutManager);
         rfg_RecyclerView_rcp_list.setLayoutManager(GridlayoutManager);
 
         ingredients_itemArrayList = new ArrayList<>();
+        ingredients_per_recipe = new ArrayList<>();
         recipe_itemArrayList = new ArrayList<>();
 
         prefer = view.getContext().getSharedPreferences("pref", Context.MODE_PRIVATE);
         String userToken = prefer.getString("token", "");
 
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference mDatabase2 = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("userIngredient").child(userToken).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -74,19 +78,45 @@ public class Rfg_page extends Fragment {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Ingredients_list rec = snapshot.getValue(Ingredients_list.class);
                     ingredients_itemArrayList.add(rec);
-                    Ingredient_name = Ingredient_name.concat(" " + rec.getname());;
+                    Ingredient_name = Ingredient_name.concat(rec.getname() + " ");;
                 }
-                adapter1.notifyDataSetChanged();
-                String[] a = Ingredient_name.split(" ");
-                System.out.println("@@@@@@@@@@@@@@@@@" + a[0]);
 
+                // my_ingredient안에 내 냉장교 재료들을 담아 두고 있음
+                String[] my_ingredient = Ingredient_name.split(" ");
 
-                mDatabase2.child("userIngredient").child(userToken).addValueEventListener(new ValueEventListener() {
+                DatabaseReference mDatabase2 = FirebaseDatabase.getInstance().getReference();
+                mDatabase2.child("Search").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        same = 0;
+                        String ingredient_per_Food_String = "";
 
+                        for(DataSnapshot snapshot2 : snapshot.getChildren()) {
+                            same = 0;
+                            Recipe rec = snapshot2.getValue(Recipe.class);
+
+                            ingredient_per_Food_String = rec.getIngredient();
+                            String[] ingredient_per_Food = ingredient_per_Food_String.split(",");
+                            ingredients_per_recipe.clear();
+                            for(int i = 0; i < my_ingredient.length; i++){
+                                for(int j = 0; j < ingredient_per_Food.length; j++){
+                                    if(my_ingredient[i].equals(ingredient_per_Food[j])){
+                                        same += 1;
+
+                                        if(same == ingredient_per_Food.length) {
+                                            recipe_itemArrayList.add(rec);
+                                            same = 0;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                            ingredient_per_Food = new String[] {};
+                            ingredient_per_Food_String = "";
+                        }
+                        adapter1.notifyDataSetChanged();
+                        adapter2.notifyDataSetChanged();
                     }
-
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 
@@ -101,8 +131,8 @@ public class Rfg_page extends Fragment {
         });
         adapter1 = new Rfg_adapter(ingredients_itemArrayList, view.getContext());
         rfg_RecyclerView.setAdapter(adapter1);
-
-
+        adapter2 = new rec_adapter(recipe_itemArrayList, view.getContext());
+        rfg_RecyclerView_rcp_list.setAdapter(adapter2);
 
         ImageButton next = view.findViewById(R.id.rfg_Button);
         next.setOnClickListener(new View.OnClickListener() {
