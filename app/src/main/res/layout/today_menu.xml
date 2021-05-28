@@ -12,6 +12,7 @@
         android:layout_height="200dp"
         android:src="@drawable/iamstillhungry"/>
 
+
     <LinearLayout
         android:id="@+id/linear"
         android:layout_width="370dp"
