@@ -1,16 +1,21 @@
 package com.changmeen.firebase;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -18,6 +23,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.lang.reflect.Array;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 
 
@@ -30,6 +37,9 @@ public class TodayMenu extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.today_menu, container, false);
         LinearLayout layout = (LinearLayout) v.findViewById(R.id.todaymenu);
+
+        ImageButton recommend_btn = (ImageButton) v.findViewById(R.id.recommendBtn);
+        ImageView recommend_rec = (ImageView) v.findViewById(R.id.recommendRec);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -54,8 +64,24 @@ public class TodayMenu extends Fragment {
                             readstr = readstr.substring(readstr.indexOf("image"));
                     }
 
-
+                    recommend_btn.setVisibility(View.VISIBLE);
                 }
+            }
+        });
+
+        recommend_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                int rand = (int) Math.random() * data.size();
+
+                String url = data.get(rand);
+
+                data.remove(rand);
+                data.add(url);
+
+                Glide.with(view.getContext()).load(url).into(recommend_rec);
+
             }
         });
 

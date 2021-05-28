@@ -11,11 +11,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class Profile_activity extends AppCompatActivity {
     private ImageView ivBack,ivSetting;
     private TextView nicknameText;
-    Profile_Adapter adapter;
-    private SharedPreferences prefer;
+    private Profile_Adapter adapter;
+    private SharedPreferences pref;
+    private DatabaseReference mDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +33,7 @@ public class Profile_activity extends AppCompatActivity {
             finish();
         });
 
+        // toolbar 관련 이벤트
         ivSetting = findViewById(R.id.iv_setting);
 
         ivSetting.setOnClickListener(v -> {
@@ -34,32 +42,25 @@ public class Profile_activity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        nicknameText = findViewById(R.id.textView3);
+        // 이름적는 부분
+        nicknameText = (TextView) findViewById(R.id.textView3);
+        pref = getSharedPreferences("pref", MODE_PRIVATE);
+        String name = pref.getString("UserName", "");
 
-        prefer = getSharedPreferences("pref", Context.MODE_PRIVATE);
-        String nickname = prefer.getString("Username", "");
-        System.out.println("###############################"+nickname);
+        nicknameText.setText(name);
+    }
 
-        nicknameText.setText(nickname);
+    @Override
+    protected void onStart() {
+        super.onStart();
 
+        // 이름적는 부분
+        nicknameText = (TextView) findViewById(R.id.textView3);
+        pref = getSharedPreferences("pref", MODE_PRIVATE);
+        String name = pref.getString("UserName", "");
 
-        init();
-        getData();
+        nicknameText.setText(name);
 
     }
 
-    private void init(){
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(linearLayoutManager);
-
-        adapter = new Profile_Adapter();
-        recyclerView.setAdapter(adapter);
-    }
-
-    private void getData(){
-        Profile_item data = new Profile_item(R.drawable.baek1, "짬뽕");
-        adapter.addItem(data);
-    }
 }

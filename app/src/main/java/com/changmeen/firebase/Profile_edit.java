@@ -1,5 +1,6 @@
 package com.changmeen.firebase;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -23,8 +24,6 @@ public class Profile_edit extends AppCompatActivity {
     private SharedPreferences.Editor editor;
     private ImageView ivBack;
 
-    String nickname;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,17 +34,20 @@ public class Profile_edit extends AppCompatActivity {
             finish();
         });
 
+        pref = getSharedPreferences("pref", MODE_PRIVATE);
+
         nickname_edit = findViewById(R.id.editNickname);
         confirm_button = findViewById(R.id.btn_edit_profile);
         confirm_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nickname = nickname_edit.getText().toString();
-                pref = getSharedPreferences("pref", MODE_PRIVATE); //이렇게 호출해야됨
+                String nickname = nickname_edit.getText().toString();
                 editor = pref.edit();
                 editor.putString("UserName", nickname);
                 editor.commit();
-                Toast.makeText(getApplicationContext(), "변경 성공", Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(getApplicationContext(), pref.getString("UserName",""), Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
     }

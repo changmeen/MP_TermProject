@@ -4,16 +4,36 @@
     android:id="@+id/todaymenu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/background6">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:src="@drawable/iamstillhungry"/>
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="370dp"
+        android:layout_height="410dp"
         android:layout_gravity="center"
-        android:gravity="center"
-        android:text="오늘 뭐먹지"
-        android:textSize="50dp" />
+        android:background="#00ff0000"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/recommendBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:src="@drawable/recommend"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/recommendRec"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
 
 
 

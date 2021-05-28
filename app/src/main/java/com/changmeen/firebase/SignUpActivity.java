@@ -1,6 +1,7 @@
 package com.changmeen.firebase;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -18,6 +19,8 @@ import com.google.firebase.auth.FirebaseUser;
 public class SignUpActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+    private SharedPreferences pref;
+    private SharedPreferences.Editor editor;
     private static final String TAG = "SignUpActivity";
 
     @Override
@@ -59,6 +62,10 @@ public class SignUpActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
+                            pref = getSharedPreferences("pref", MODE_PRIVATE);
+                            editor = pref.edit();
+                            editor.putString("UserName", email);
+                            editor.commit();
                             Toast.makeText(getApplicationContext(), "회원가입 성공", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                             startActivity(intent);

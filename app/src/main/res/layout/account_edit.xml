@@ -22,7 +22,6 @@
                 android:layout_height="168dp"
                 android:layout_marginTop="111dp"
                 android:layout_marginBottom="54dp"
-                android:visibility="visible"
                 app:layout_constraintBottom_toTopOf="@+id/textView2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -36,12 +35,12 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="35dp"
                 android:textColor="#0E0E0E"
-                android:textStyle="bold"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toTopOf="@+id/editNickname"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView"
-                tools:text="원하시는 별명을 입력해주세요" />
+                android:text="원하시는 별명을 입력해주세요" />
 
             <EditText
                 android:id="@+id/editNickname"
@@ -51,7 +50,7 @@
                 android:background="@color/teal_200"
                 android:drawableStart="@drawable/ic_baseline_person_24"
                 android:drawableLeft="@drawable/ic_baseline_person_24"
-                android:hint="별명"
+                android:hint="새로운 별명 입력"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
