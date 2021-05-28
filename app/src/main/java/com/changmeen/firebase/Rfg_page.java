@@ -41,7 +41,6 @@ public class Rfg_page extends Fragment {
     private Context mContext;
 
     private static ArrayList<Ingredients_list> ingredients_itemArrayList;
-    private static ArrayList<Recipe> ingredients_per_recipe;
     private static ArrayList<Recipe> recipe_itemArrayList;
     private SharedPreferences prefer;
     String Ingredient_name="";
@@ -63,7 +62,6 @@ public class Rfg_page extends Fragment {
         rfg_RecyclerView_rcp_list.setLayoutManager(GridlayoutManager);
 
         ingredients_itemArrayList = new ArrayList<>();
-        ingredients_per_recipe = new ArrayList<>();
         recipe_itemArrayList = new ArrayList<>();
 
         prefer = view.getContext().getSharedPreferences("pref", Context.MODE_PRIVATE);
@@ -80,7 +78,7 @@ public class Rfg_page extends Fragment {
                     ingredients_itemArrayList.add(rec);
                     Ingredient_name = Ingredient_name.concat(rec.getname() + " ");;
                 }
-
+                adapter1.notifyDataSetChanged();
                 // my_ingredient안에 내 냉장교 재료들을 담아 두고 있음
                 String[] my_ingredient = Ingredient_name.split(" ");
 
@@ -88,40 +86,34 @@ public class Rfg_page extends Fragment {
                 mDatabase2.child("Search").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        same = 0;
-                        String ingredient_per_Food_String = "";
-
+                        recipe_itemArrayList.clear();
                         for(DataSnapshot snapshot2 : snapshot.getChildren()) {
                             same = 0;
                             Recipe rec = snapshot2.getValue(Recipe.class);
 
-                            ingredient_per_Food_String = rec.getIngredient();
+                            String ingredient_per_Food_String = rec.getIngredient();
                             String[] ingredient_per_Food = ingredient_per_Food_String.split(",");
-                            ingredients_per_recipe.clear();
+
                             for(int i = 0; i < my_ingredient.length; i++){
                                 for(int j = 0; j < ingredient_per_Food.length; j++){
                                     if(my_ingredient[i].equals(ingredient_per_Food[j])){
                                         same += 1;
-
-                                        if(same == ingredient_per_Food.length) {
-                                            recipe_itemArrayList.add(rec);
-                                            same = 0;
-                                            break;
-                                        }
+                                        continue;
                                     }
                                 }
                             }
-                            ingredient_per_Food = new String[] {};
-                            ingredient_per_Food_String = "";
+                            if(same == ingredient_per_Food.length) {
+                                recipe_itemArrayList.add(rec);
+                            }
                         }
-                        adapter1.notifyDataSetChanged();
                         adapter2.notifyDataSetChanged();
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
                     }
                 });
+                adapter2 = new rec_adapter(recipe_itemArrayList, view.getContext());
+                rfg_RecyclerView_rcp_list.setAdapter(adapter2);
             }
 
             @Override
@@ -131,8 +123,6 @@ public class Rfg_page extends Fragment {
         });
         adapter1 = new Rfg_adapter(ingredients_itemArrayList, view.getContext());
         rfg_RecyclerView.setAdapter(adapter1);
-        adapter2 = new rec_adapter(recipe_itemArrayList, view.getContext());
-        rfg_RecyclerView_rcp_list.setAdapter(adapter2);
 
         ImageButton next = view.findViewById(R.id.rfg_Button);
         next.setOnClickListener(new View.OnClickListener() {
