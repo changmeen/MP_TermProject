@@ -10,18 +10,14 @@
             <item
                 android:id="@+id/nav_email"
                 android:icon="@drawable/icon_1"
-                android:title="Youtube" />
+                android:title="BEAK's Youtube" />
 
 
             <item
                 android:id="@+id/nav_community"
+                android:icon="@drawable/ic_community"
                 android:title="Community" />
-<!--                android:icon="@drawable/youtubeicon"-->
-<!--                android:title="Youtube" />-->
-<!--            <item-->
-<!--                android:id="@+id/nav_appinfo"-->
-<!--                android:icon="@drawable/kimchibap"-->
-<!--                android:title="쿠쿠르삥빵뽕" />-->
+
         </menu>
     </item>
 </menu>
