@@ -29,10 +29,10 @@ public class Profile_edit extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.account_edit);
 
-        ivBack = findViewById(R.id.iv_back);
-        ivBack.setOnClickListener(v -> {
-            finish();
-        });
+//        ivBack = findViewById(R.id.iv_back);
+//        ivBack.setOnClickListener(v -> {
+//            finish();
+//        });
 
         pref = getSharedPreferences("pref", MODE_PRIVATE);
 

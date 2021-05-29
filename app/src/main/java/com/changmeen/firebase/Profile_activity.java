@@ -49,7 +49,7 @@ public class Profile_activity extends AppCompatActivity {
 
         ivSetting.setOnClickListener(v -> {
             Intent intent = new Intent(this, Profile_edit.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//            intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
         });
 

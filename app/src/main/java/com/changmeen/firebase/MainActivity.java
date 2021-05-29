@@ -177,12 +177,13 @@ public class MainActivity extends AppCompatActivity {
 
     void show() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("AlertDialog Title");
-        builder.setMessage("AlertDialog Content");
+        builder.setTitle("종료");
+        builder.setMessage("로그아웃하시겠습니까?");
         builder.setPositiveButton("예",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getApplicationContext(), "예를 선택했습니다.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "로그아웃", Toast.LENGTH_LONG).show();
+                        finish();
                     }
                 });
         builder.setNegativeButton("아니오",
