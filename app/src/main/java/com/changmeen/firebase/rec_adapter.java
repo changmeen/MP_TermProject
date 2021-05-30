@@ -33,8 +33,8 @@ public class rec_adapter extends RecyclerView.Adapter<rec_adapter.ViewHolder> {
             super(v);
 
             // rcp_item XML
-            this.rName = v.findViewById(R.id.rcp_RecyclerView_TextView);
-            this.rProfile = v.findViewById(R.id.rcp_RecyclerView_ImageView);
+            this.rName = v.findViewById(R.id.nameText);
+            this.rProfile = v.findViewById(R.id.imageView1);
         }
     }
 
@@ -61,11 +61,12 @@ public class rec_adapter extends RecyclerView.Adapter<rec_adapter.ViewHolder> {
                 .into(holder.rProfile);
 
         holder.rName.setText(arrayList.get(position).getName());
-        holder.rProfile.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(v.getContext(), receipeActivity.class);
+                intent = new Intent(v.getContext(), Favorite_recipe_Activity.class);
                 Recipe recipe = new Recipe();
+                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
                 recipe.setImage(arrayList.get(position).getImage());
                 recipe.setName(arrayList.get(position).getName());

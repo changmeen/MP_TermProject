@@ -16,7 +16,8 @@
         <activity android:name=".Profile_activity"></activity>
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".SignUpActivity"></activity>
-        <activity android:name=".receipeActivity"></activity>
+        <activity android:name=".Favorite_recipe_Activity"></activity>
+        <activity android:name=".noFavorite_recipe_Activity"></activity>
         <activity android:name=".Ingredient_add"></activity>
         <activity android:name=".communityActivity"></activity>
         <activity android:name=".communitySearch"></activity>

@@ -30,7 +30,7 @@ public class Profile_activity extends AppCompatActivity {
     private TextView nicknameText;
     private RecyclerView recyclerview;
     private LinearLayoutManager manager;
-    private rec_adapter adapter;
+    private Profile_Adapter adapter;
     private SharedPreferences pref;
     private static ArrayList<Recipe> itemArrayList;
 
@@ -81,7 +81,7 @@ public class Profile_activity extends AppCompatActivity {
                 Log.e("fragment1", String.valueOf(databaseError.toException()));
             }
         });
-        adapter = new rec_adapter(itemArrayList, getApplicationContext());
+        adapter = new Profile_Adapter(itemArrayList, getApplicationContext());
         recyclerview.setAdapter(adapter);
 
         // 이름적는 부분

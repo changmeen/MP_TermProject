@@ -1,14 +1,11 @@
 package com.changmeen.firebase;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -23,9 +20,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.lang.reflect.Array;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -104,7 +98,7 @@ public class TodayMenu extends Fragment {
                 recommend_rec.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view2) {
-                        Intent intent = new Intent(view2.getContext(), receipeActivity.class);
+                        Intent intent = new Intent(view2.getContext(), Favorite_recipe_Activity.class);
                         Recipe recipe = new Recipe();
 
                         recipe.setImage(image.get(rand));

@@ -3,14 +3,12 @@ package com.changmeen.firebase;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -67,10 +65,10 @@ public class Profile_Adapter extends RecyclerView.Adapter<Profile_Adapter.ViewHo
 
         holder.rName.setText(arrayList.get(position).getName());
         prefer = context.getSharedPreferences("pref" ,MODE_PRIVATE);
-        holder.rProfile.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(v.getContext(), receipeActivity.class);
+                intent = new Intent(v.getContext(), noFavorite_recipe_Activity.class);
                 Recipe recipe = new Recipe();
 
                 recipe.setImage(arrayList.get(position).getImage());
