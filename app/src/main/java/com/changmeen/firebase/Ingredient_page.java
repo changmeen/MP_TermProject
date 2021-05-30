@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,11 +31,17 @@ public class Ingredient_page extends AppCompatActivity {
     private static ArrayList<Ingredients_list> itemArrayList;
     private static ArrayList<rec_adapter> itemArrayList1;
     private SharedPreferences prefer;
+    private ImageView ivBack;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ingredient_page);
+
+        ivBack = findViewById(R.id.iv_back);
+        ivBack.setOnClickListener(v -> {
+            finish();
+        });
 
         recyclerView = findViewById(R.id.ingredient_RecyclerView);
         layoutManager = new GridLayoutManager(this, 5);
